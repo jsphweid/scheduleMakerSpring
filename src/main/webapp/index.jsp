@@ -22,8 +22,17 @@
         <th colspan="1"></th>
     </tr>
     <tr>
-        <td><a class="btn btn-primary" href="manageEmployees.html">Manage Employees >></a></td>
+        <td>
+            <a href="manageEmployees">
+                <button class="btn btn-default">
+                    Manage Employees >>
+                </button>
+            </a>
+        </td>
     </tr>
+    <%--<tr>--%>
+        <%--<td><a class="btn btn-default" href="managePositions.html">Manage Employees >></a></td>--%>
+    <%--</tr>--%>
 </table>
 
 <a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>

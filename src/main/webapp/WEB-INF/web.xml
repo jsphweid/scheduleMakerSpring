@@ -17,7 +17,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/config/security-config.xml
+			/WEB-INF/config/security-config.xml,
 			classpath:/jpaContext.xml
 		</param-value>
 	</context-param>
@@ -47,7 +47,8 @@
 	
 	<servlet-mapping>
 		<servlet-name>scheduleMakerServlet</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<!--<url-pattern>*.html</url-pattern>-->
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
