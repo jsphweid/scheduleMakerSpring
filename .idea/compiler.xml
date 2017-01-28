@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="FitnessTracker" />
+        <module name="scheduleMaker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FitnessTracker" target="1.5" />
+      <module name="scheduleMaker" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

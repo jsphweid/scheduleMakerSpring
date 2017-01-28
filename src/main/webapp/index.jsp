@@ -1,3 +1,5 @@
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,5 +15,17 @@
 </head>
 <body>
 
+<h2>Welcome <sec:authentication property="name" /></h2>
+
+<table>
+    <tr>
+        <th colspan="1"></th>
+    </tr>
+    <tr>
+        <td><a class="btn btn-primary" href="manageEmployees.html">Manage Employees >></a></td>
+    </tr>
+</table>
+
+<a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>
 </body>
 </html>
