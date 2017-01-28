@@ -2,6 +2,7 @@ package com.joseph.repository;
 
 import com.joseph.model.Employee;
 import com.joseph.service.SessionService;
+import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +38,13 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public Employee update(Employee employee) {
         em.merge(employee);
         return employee;
+    }
+
+    public void delete(int id) {
+        System.out.println("deleteing at: " + id);
+        em.createQuery("DELETE FROM Employee e WHERE e.id = :_id")
+                .setParameter("_id", id)
+                .executeUpdate();
     }
 
     public Employee getEmpById(int id) {

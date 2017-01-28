@@ -28,6 +28,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.update(employee);
     }
 
+    @Transactional
+    public void delete(int id) {
+        employeeRepository.delete(id);
+    }
+
     public Employee getEmployee(int id) {
         return employeeRepository.getEmpById(id);
     }

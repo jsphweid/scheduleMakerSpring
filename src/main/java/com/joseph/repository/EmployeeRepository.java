@@ -13,4 +13,6 @@ public interface EmployeeRepository {
     Employee getEmpById(int id);
 
     Employee update(Employee employee);
+
+    void delete(int id);
 }

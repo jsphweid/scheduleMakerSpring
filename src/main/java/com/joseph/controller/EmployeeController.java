@@ -50,7 +50,7 @@ public class EmployeeController {
         } else {
             employeeService.save(employee);
         }
-        return "redirect:manageEmployees.html";
+        return "redirect:/manageEmployees.html";
     }
 
 
@@ -70,6 +70,13 @@ public class EmployeeController {
             employeeService.update(employee);
         }
         return "redirect:manageEmployees.html";
+    }
+
+    @RequestMapping(value = "/editEmployee/delete/{id}", method = RequestMethod.GET)
+    public String deleteEmployee(@PathVariable int id, Model model) {
+        System.out.println("deleting now -------------------------------");
+        employeeService.delete(id);
+        return "redirect:/manageEmployees.html";
     }
 
 }
