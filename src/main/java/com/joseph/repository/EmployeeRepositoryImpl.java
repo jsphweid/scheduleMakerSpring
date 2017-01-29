@@ -41,7 +41,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     public void delete(int id) {
-        System.out.println("deleteing at: " + id);
         em.createQuery("DELETE FROM Employee e WHERE e.id = :_id")
                 .setParameter("_id", id)
                 .executeUpdate();

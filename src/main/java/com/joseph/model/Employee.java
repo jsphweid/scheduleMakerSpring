@@ -5,12 +5,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="employee")
-@NamedQueries({
-        @NamedQuery(name=Employee.FIND_ALL_EMPLOYEES, query="SELECT e FROM Employee e order by e.firstName, e.lastName")
-})
 public class Employee {
-
-    public static final String FIND_ALL_EMPLOYEES = "findAllEmployees";
 
     @Id
     @GeneratedValue
@@ -34,10 +29,6 @@ public class Employee {
 
     @NotNull
     private String belongsTo;
-
-    public static String getFindAllEmployees() {
-        return FIND_ALL_EMPLOYEES;
-    }
 
     public int getId() {
         return id;

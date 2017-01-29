@@ -21,6 +21,8 @@ public class LoginController {
         if (!addInitialData.isAdded) {
             addInitialData.isAdded = true;
             addInitialData.addEmployees();
+            addInitialData.addPositions();
+            addInitialData.addDayPredictions();
         }
         return "login";
     }
