@@ -1,5 +1,9 @@
 package com.joseph.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -11,20 +15,22 @@ public class Employee {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty
     private String firstName;
 
-    @NotNull
+    @NotEmpty
     private String lastName;
 
     @NotNull
     private float hourlyWage;
 
-    @NotNull
+    @Range(min = 10, max = 30)
     private float score;
 
+    @Range(min = 0, max = 168)
     private float minHours;
 
+    @Range(min = 0, max = 168)
     private float maxHours;
 
     @NotNull

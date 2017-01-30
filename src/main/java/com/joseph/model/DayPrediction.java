@@ -1,5 +1,8 @@
 package com.joseph.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +17,7 @@ public class DayPrediction {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotBlank
     private String title;
 
     public String getBelongsTo() {
@@ -24,11 +27,6 @@ public class DayPrediction {
     public void setBelongsTo(String belongsTo) {
         this.belongsTo = belongsTo;
     }
-
-//    @Override
-//    public String toString() {
-//        return
-//    }
 
 
     @Override

@@ -44,7 +44,7 @@ public class AddInitialData {
         emp3.setFirstName("Teddy");
         emp3.setLastName("Roosevelt");
         emp3.setBelongsTo("clayton");
-        emp3.setScore(5);
+        emp3.setScore(10);
         emp3.setHourlyWage(6);
         emp3.setMinHours(4);
         emp3.setMaxHours(29);
@@ -52,6 +52,7 @@ public class AddInitialData {
     }
 
     public void addPositions() {
+        System.out.println("adding new positions ----------->");
         Position p1 = new Position();
         p1.setTitle("joseph rolling");
         p1.setBelongsTo("joseph");

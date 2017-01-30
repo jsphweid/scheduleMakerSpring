@@ -42,7 +42,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String newEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result) {
-
+        System.out.println("result has errors: " + result.hasErrors());
         if (result.hasErrors()) {
             return "addEmployee";
         } else {

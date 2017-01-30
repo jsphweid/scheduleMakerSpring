@@ -18,6 +18,9 @@
 
 	<context:component-scan base-package="com.joseph.controller" />
 
+	<!--<bean id="myBeansValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
+	<!--<mvc:annotation-driven validator="myBeansValidator" />-->
+
 	<security:global-method-security pre-post-annotations="enabled"/>
 
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">

@@ -19,10 +19,10 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
         if (!addInitialData.isAdded) {
-            addInitialData.isAdded = true;
             addInitialData.addEmployees();
             addInitialData.addPositions();
             addInitialData.addDayPredictions();
+            addInitialData.isAdded = true;
         }
         return "login";
     }
