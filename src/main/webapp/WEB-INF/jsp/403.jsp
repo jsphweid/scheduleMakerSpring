@@ -4,6 +4,16 @@
     <title>Authorization Failture</title>
 </head>
 <body>
-<h2>Sorry, you are not authorized to view this.</h2>
+<jsp:include page="template/header.jsp"/>
+<div class="container">
+
+
+
+    <h2>Sorry, you are not authorized to view this.</h2>
+    <jsp:include page="template/footer.jsp"/>
+
+
+
+</div>
 </body>
 </html>

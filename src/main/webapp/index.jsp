@@ -1,4 +1,5 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +9,14 @@
     <title>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { padding-top: 60px; }
-    </style>
+    <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
+    <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="WEB-INF/jsp/template/header.jsp"/>
+<div class="container">
+
+
 
 <h2>Welcome <sec:authentication property="name" /></h2>
 
@@ -22,7 +25,7 @@
         <th colspan="1"></th>
     </tr>
     <tr>
-        <td><a class="btn btn-default" href="managePositions.html">Manage Employees >></a></td>
+        <td><a class="btn btn-default" href="manageEmployees.html">Manage Employees >></a></td>
     </tr>
     <tr>
         <td><a class="btn btn-default" href="managePositions.html">Manage Positions >></a></td>
@@ -33,5 +36,10 @@
 </table>
 
 <a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>
+
+
+
+</div>
+<jsp:include page="WEB-INF/jsp/template/footer.jsp"/>
 </body>
 </html>

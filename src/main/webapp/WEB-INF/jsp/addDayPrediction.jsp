@@ -18,73 +18,81 @@
             margin: 16px;
         }
     </style>
-
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/rgraph.moveablebargraph.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
+    <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
 </head>
 <body>
-<h2>Add new Day Prediction</h2>
+<jsp:include page="template/header.jsp"/>
+<div class="container">
 
-<form:form commandName="dayPrediction" path="dayPredictionForm">
 
-    <form:errors path="*" cssClass="errorblock" element="div" />
 
-    <label for="textinput1">
-        Enter Title:
-    </label>
-    <form:input path="title" cssErrorClass="error" />
-    <form:errors path="title" cssClass="error" />
-    <br/>
+    <h2>Add new Day Prediction</h2>
 
-    <form:hidden path="belongsTo" />
-    <form:hidden path="hour00" value="" />
-    <form:hidden path="hour01" value="" />
-    <form:hidden path="hour02" value="" />
-    <form:hidden path="hour03" value="" />
-    <form:hidden path="hour04" value="" />
-    <form:hidden path="hour05" value="" />
-    <form:hidden path="hour06" value="" />
-    <form:hidden path="hour07" value="" />
-    <form:hidden path="hour08" value="" />
-    <form:hidden path="hour09" value="" />
-    <form:hidden path="hour10" value="" />
-    <form:hidden path="hour11" value="" />
-    <form:hidden path="hour12" value="" />
-    <form:hidden path="hour13" value="" />
-    <form:hidden path="hour14" value="" />
-    <form:hidden path="hour15" value="" />
-    <form:hidden path="hour16" value="" />
-    <form:hidden path="hour17" value="" />
-    <form:hidden path="hour18" value="" />
-    <form:hidden path="hour19" value="" />
-    <form:hidden path="hour20" value="" />
-    <form:hidden path="hour21" value="" />
-    <form:hidden path="hour22" value="" />
-    <form:hidden path="hour23" value="" />
+    <form:form commandName="dayPrediction" path="dayPredictionForm">
 
-    <input type="submit" class="btn btn-default" value="Add Day Prediction"/>
+        <form:errors path="*" cssClass="errorblock" element="div" />
 
-</form:form>
+        <label for="textinput1">
+            Enter Title:
+        </label>
+        <form:input path="title" cssErrorClass="error" />
+        <form:errors path="title" cssClass="error" />
+        <br/>
 
-<div class="container-fluid">
-    <div class="canvasBarGraph">
-        <canvas id="cvs" width="1000" height="450" >
-            [No canvas support]
-        </canvas>
+        <form:hidden path="belongsTo" />
+        <form:hidden path="hour00" value="" />
+        <form:hidden path="hour01" value="" />
+        <form:hidden path="hour02" value="" />
+        <form:hidden path="hour03" value="" />
+        <form:hidden path="hour04" value="" />
+        <form:hidden path="hour05" value="" />
+        <form:hidden path="hour06" value="" />
+        <form:hidden path="hour07" value="" />
+        <form:hidden path="hour08" value="" />
+        <form:hidden path="hour09" value="" />
+        <form:hidden path="hour10" value="" />
+        <form:hidden path="hour11" value="" />
+        <form:hidden path="hour12" value="" />
+        <form:hidden path="hour13" value="" />
+        <form:hidden path="hour14" value="" />
+        <form:hidden path="hour15" value="" />
+        <form:hidden path="hour16" value="" />
+        <form:hidden path="hour17" value="" />
+        <form:hidden path="hour18" value="" />
+        <form:hidden path="hour19" value="" />
+        <form:hidden path="hour20" value="" />
+        <form:hidden path="hour21" value="" />
+        <form:hidden path="hour22" value="" />
+        <form:hidden path="hour23" value="" />
+
+        <input type="submit" class="btn btn-default" value="Add Day Prediction"/>
+
+    </form:form>
+
+    <div class="container-fluid">
+        <div class="canvasBarGraph">
+            <canvas id="cvs" width="1000" height="450" >
+                [No canvas support]
+            </canvas>
+        </div>
     </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var rgraph = drawGraph({
+                color: "red",
+                adjustable: true
+            });
+            updateTagAssocations(rgraph, 'dayPredictionForm');
+        };
+    </script>
+
+
 </div>
-
-<script type="text/javascript">
-    window.onload = function () {
-        var rgraph = drawGraph({
-            color: "red",
-            adjustable: true
-        });
-        updateTagAssocations(rgraph, 'dayPredictionForm');
-    };
-</script>
-
+<jsp:include page="template/footer.jsp"/>
 </body>
 </html>

@@ -1,17 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: josephweidinger
-  Date: 1/29/17
-  Time: 9:18 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Show Day Prediction</title>
 
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
+    <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
     <script src="<c:url value="/assets/js/dayPredictionJS/rgraph.moveablebargraph.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
@@ -19,6 +14,10 @@
 
 </head>
 <body>
+<jsp:include page="template/header.jsp"/>
+<div class="container">
+
+
 
 <h3>${dayPrediction.title}</h3>
 
@@ -46,7 +45,11 @@
     <button class="btn btn-default">Edit</button>
 </a>
 
-<a href="btn btn-default">Back to Day Predictions</a>
+<a class="btn btn-default" href="/scheduleMaker/manageDayPredictions">Back to Day Predictions</a>
 
+
+
+</div>
+<jsp:include page="template/footer.jsp"/>
 </body>
 </html>

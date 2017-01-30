@@ -6,12 +6,17 @@
     <title>Editing ${dayPrediction.title}</title>
 
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
+    <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
     <script src="<c:url value="/assets/js/dayPredictionJS/rgraph.moveablebargraph.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
 
 </head>
 <body>
+<jsp:include page="template/header.jsp"/>
+<div class="container">
+
+
 <h2>Edit Day Prediction</h2>
 
 <form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/scheduleMaker/updateDayPrediction/${dayPrediction.id}">
@@ -53,6 +58,8 @@
 
     <input type="submit" class="btn btn-default" value="Update Prediction"/>
 
+
+
 </form:form>
 
 <div class="container-fluid">
@@ -72,5 +79,9 @@
         updateTagAssocations(rgraph, 'dayPredictionForm');
     };
 </script>
+
+
+</div>
+<jsp:include page="template/footer.jsp"/>
 </body>
 </html>
