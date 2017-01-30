@@ -22,4 +22,18 @@ public class DayPredictionServiceImpl implements DayPredictionService {
     public DayPrediction save(DayPrediction dayPrediction) {
         return dayPredictionRepository.save(dayPrediction);
     }
+
+    public DayPrediction getDayPrediction(int id) {
+        return dayPredictionRepository.getDayPrediction(id);
+    }
+
+    @Transactional
+    public DayPrediction update(DayPrediction dayPrediction) {
+        return dayPredictionRepository.update(dayPrediction);
+    }
+
+    @Transactional
+    public void delete(int id) {
+        dayPredictionRepository.delete(id);
+    }
 }

@@ -1,6 +1,6 @@
 function getData(specialString) {
     if (specialString) {
-        return makeDataArray(JSON.parse(specialString));
+        return makeDataArray(JSON.parse(specialString.replace(/'/g, "\"")));
     } else {
         return Array.apply(null, Array(24)).map(Number.prototype.valueOf,0);
     }

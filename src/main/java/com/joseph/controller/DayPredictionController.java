@@ -3,11 +3,13 @@ package com.joseph.controller;
 import com.joseph.model.DayPrediction;
 import com.joseph.service.DayPredictionService;
 import com.joseph.service.SessionService;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,10 +51,39 @@ public class DayPredictionController {
         return "redirect:manageDayPredictions.html";
     }
 
-//    @RequestMapping(value = "/showDayPrediction/{id}", method = RequestMethod.GET)
-//    public String showDayPrediction(Model model) {
-//
-//    }
+    @RequestMapping(value = "/showDayPrediction/{id}", method = RequestMethod.GET)
+    public String showDayPrediction(@PathVariable int id, Model model) {
+        DayPrediction dayPrediction = dayPredictionService.getDayPrediction(id);
+        model.addAttribute("dayPredictionJSON", dayPrediction.toString());
+        model.addAttribute("dayPrediction", dayPrediction);
+        return "showDayPrediction";
+    }
 
+    @RequestMapping(value = "/editDayPrediction/{id}", method = RequestMethod.GET)
+    public String editDayPrediction(@PathVariable int id, Model model) {
+        DayPrediction dayPrediction = dayPredictionService.getDayPrediction(id);
+        model.addAttribute("dayPredictionJSON", dayPrediction.toString());
+        model.addAttribute("dayPrediction", dayPrediction);
+        return "editDayPrediction";
+    }
+
+    @RequestMapping(value = "/updateDayPrediction/{id}", method = RequestMethod.POST)
+    public String updateEmployee(@Valid
+                                 @ModelAttribute("dayPrediction") DayPrediction dayPrediction,
+                                 BindingResult result,
+                                 @PathVariable int id) {
+        if (result.hasErrors()) {
+            return "editDayPrediction/" + id;
+        } else {
+            dayPredictionService.update(dayPrediction);
+        }
+        return "redirect:/showDayPrediction/" + id;
+    }
+
+    @RequestMapping(value = "/editDayPrediction/delete/{id}", method = RequestMethod.GET)
+    public String deleteEmployee(@PathVariable int id) {
+        dayPredictionService.delete(id);
+        return "redirect:/manageDayPredictions.html";
+    }
 
 }

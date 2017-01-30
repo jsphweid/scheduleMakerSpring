@@ -44,7 +44,7 @@ public class PositionController {
     public String updatePosition(@Valid @ModelAttribute("position") Position position,
                                  BindingResult result) {
         if (result.hasErrors()) {
-            return "addPosition";
+            return "editPosition/{id}";
         } else {
             positionService.update(position);
         }

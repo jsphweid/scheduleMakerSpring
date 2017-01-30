@@ -1,33 +1,20 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add Day Prediction</title>
-    <style>
-        .error {
-            color: #ff0000;
-        }
-
-        .errorblock {
-            color: #000;
-            background-color: #ffEEEE;
-            border: 3px solid #ff0000;
-            padding: 8px;
-            margin: 16px;
-        }
-    </style>
+    <title>Editing ${dayPrediction.title}</title>
 
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/rgraph.moveablebargraph.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
+
 </head>
 <body>
-<h2>Add new Day Prediction</h2>
+<h2>Edit Day Prediction</h2>
 
-<form:form commandName="dayPrediction" path="dayPredictionForm">
+<form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/scheduleMaker/updateDayPrediction/${dayPrediction.id}">
 
     <form:errors path="*" cssClass="errorblock" element="div" />
 
@@ -64,7 +51,7 @@
     <form:hidden path="hour22" value="" />
     <form:hidden path="hour23" value="" />
 
-    <input type="submit" class="btn btn-default" value="Add Day Prediction"/>
+    <input type="submit" class="btn btn-default" value="Update Prediction"/>
 
 </form:form>
 
@@ -81,10 +68,9 @@
         var rgraph = drawGraph({
             color: "red",
             adjustable: true
-        });
+        }, "${dayPredictionJSON}");
         updateTagAssocations(rgraph, 'dayPredictionForm');
     };
 </script>
-
 </body>
 </html>

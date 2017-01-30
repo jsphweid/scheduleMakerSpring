@@ -25,6 +25,45 @@ public class DayPrediction {
         this.belongsTo = belongsTo;
     }
 
+//    @Override
+//    public String toString() {
+//        return
+//    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\'id\':" + id +
+                ", \'title\':" + '\'' + title + '\'' +
+                ", \'belongsTo\':" + '\'' + belongsTo + '\'' +
+                ", \'hour00\':" + hour00 +
+                ", \'hour01\':" + hour01 +
+                ", \'hour02\':" + hour02 +
+                ", \'hour03\':" + hour03 +
+                ", \'hour04\':" + hour04 +
+                ", \'hour05\':" + hour05 +
+                ", \'hour06\':" + hour06 +
+                ", \'hour07\':" + hour07 +
+                ", \'hour08\':" + hour08 +
+                ", \'hour09\':" + hour09 +
+                ", \'hour10\':" + hour10 +
+                ", \'hour11\':" + hour11 +
+                ", \'hour12\':" + hour12 +
+                ", \'hour13\':" + hour13 +
+                ", \'hour14\':" + hour14 +
+                ", \'hour15\':" + hour15 +
+                ", \'hour16\':" + hour16 +
+                ", \'hour17\':" + hour17 +
+                ", \'hour18\':" + hour18 +
+                ", \'hour19\':" + hour19 +
+                ", \'hour20\':" + hour20 +
+                ", \'hour21\':" + hour21 +
+                ", \'hour22\':" + hour22 +
+                ", \'hour23\':" + hour23 +
+                '}';
+    }
+
     @NotNull
     private String belongsTo;
 

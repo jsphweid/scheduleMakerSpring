@@ -25,10 +25,25 @@ public class DayPredictionRepositoryImpl implements DayPredictionRepository {
     }
 
     public DayPrediction save(DayPrediction dayPrediction) {
-        System.out.println(dayPrediction.getHour00());
-        System.out.println(dayPrediction.getHour01());
         em.persist(dayPrediction);
         em.flush();
         return dayPrediction;
+    }
+
+    public DayPrediction getDayPrediction(int id) {
+        return em.createQuery("SELECT d FROM DayPrediction d WHERE d.id = :id", DayPrediction.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
+    public DayPrediction update(DayPrediction dayPrediction) {
+        em.merge(dayPrediction);
+        return dayPrediction;
+    }
+
+    public void delete(int id) {
+        em.createQuery("DELETE FROM DayPrediction d WHERE d.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
     }
 }

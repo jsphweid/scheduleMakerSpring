@@ -14,7 +14,7 @@
     <c:forEach items="${dayPredictions}" var="dayPrediction">
         <tr>
             <td>${dayPrediction.title}</td>
-            <td><a href="editDayPrediction/${dayPrediction.id}"><button class="btn btn-default">Edit</button></a></td>
+            <td><a href="showDayPrediction/${dayPrediction.id}"><button class="btn btn-default">Show</button></a></td>
         </tr>
     </c:forEach>
 </table>

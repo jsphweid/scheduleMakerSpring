@@ -63,7 +63,7 @@ public class EmployeeController {
     public String updateEmployee(@Valid @ModelAttribute("employee") Employee employee,
                                  BindingResult result) {
         if (result.hasErrors()) {
-            return "addEmployee";
+            return "editEmployee/{id}";
         } else {
             employeeService.update(employee);
         }
@@ -72,7 +72,6 @@ public class EmployeeController {
 
     @RequestMapping(value = "/editEmployee/delete/{id}", method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable int id, Model model) {
-        System.out.println("deleting now -------------------------------");
         employeeService.delete(id);
         return "redirect:/manageEmployees.html";
     }
