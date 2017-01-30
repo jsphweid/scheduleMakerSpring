@@ -26,7 +26,6 @@ public class PositionRepositoryImpl implements PositionRepository {
     }
 
     public Position save(Position position) {
-        System.out.println("position title: " + position.getTitle());
         em.persist(position);
         em.flush();
         return position;

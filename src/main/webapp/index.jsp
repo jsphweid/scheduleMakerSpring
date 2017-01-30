@@ -33,6 +33,9 @@
     <tr>
         <td><a class="btn btn-default" href="manageDayPredictions.html">Manage Day Predictions >></a></td>
     </tr>
+    <tr>
+        <td><a class="btn btn-default" href="manageWeekPredictions.html">Manage Week Predictions >></a></td>
+    </tr>
 </table>
 
 <a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>
