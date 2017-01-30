@@ -55,6 +55,7 @@ public class EmployeeController {
     @RequestMapping(value = "/editEmployee/{id}", method = RequestMethod.GET)
     public String editEmployee(@PathVariable int id, Model model) {
         Employee employee = employeeService.getEmployee(id);
+        if (!session.getSessionUsername().equals(employee.getBelongsTo())) return "403";
         model.addAttribute("employee", employee);
         return "editEmployee";
     }
@@ -72,6 +73,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/editEmployee/delete/{id}", method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable int id, Model model) {
+        if (!session.getSessionUsername().equals(employeeService.getEmployee(id).getBelongsTo())) return "403";
         employeeService.delete(id);
         return "redirect:/manageEmployees.html";
     }

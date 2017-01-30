@@ -34,8 +34,8 @@ public class PositionController {
 
     @RequestMapping(value = "/editPosition/{id}", method = RequestMethod.GET)
     public String editPosition(@PathVariable int id, Model model) {
-
         Position position = positionService.getPosition(id);
+        if (!session.getSessionUsername().equals(position.getBelongsTo())) return "403";
         model.addAttribute("position", position);
         return "editPosition";
     }
@@ -71,6 +71,7 @@ public class PositionController {
 
     @RequestMapping(value = "/editPosition/delete/{id}", method = RequestMethod.GET)
     public String deletePosition(@PathVariable int id, Model model) {
+        if (!session.getSessionUsername().equals(positionService.getPosition(id).getBelongsTo())) return "403";
         positionService.delete(id);
         return "redirect:/managePositions.html";
     }

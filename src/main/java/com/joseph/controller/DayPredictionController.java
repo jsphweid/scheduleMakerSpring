@@ -62,6 +62,7 @@ public class DayPredictionController {
     @RequestMapping(value = "/editDayPrediction/{id}", method = RequestMethod.GET)
     public String editDayPrediction(@PathVariable int id, Model model) {
         DayPrediction dayPrediction = dayPredictionService.getDayPrediction(id);
+        if (!session.getSessionUsername().equals(dayPrediction.getBelongsTo())) return "403";
         model.addAttribute("dayPredictionJSON", dayPrediction.toString());
         model.addAttribute("dayPrediction", dayPrediction);
         return "editDayPrediction";
@@ -72,6 +73,7 @@ public class DayPredictionController {
                                  @ModelAttribute("dayPrediction") DayPrediction dayPrediction,
                                  BindingResult result,
                                  @PathVariable int id) {
+        if (!session.getSessionUsername().equals(dayPredictionService.getDayPrediction(id).getBelongsTo())) return "403";
         if (result.hasErrors()) {
             return "editDayPrediction/" + id;
         } else {
@@ -82,6 +84,7 @@ public class DayPredictionController {
 
     @RequestMapping(value = "/editDayPrediction/delete/{id}", method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable int id) {
+        if (!session.getSessionUsername().equals(dayPredictionService.getDayPrediction(id).getBelongsTo())) return "403";
         dayPredictionService.delete(id);
         return "redirect:/manageDayPredictions.html";
     }
