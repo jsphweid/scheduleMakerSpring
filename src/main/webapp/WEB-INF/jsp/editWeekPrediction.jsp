@@ -7,7 +7,9 @@
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
     <script src="<c:url value="/assets/js/weekPredictionJS/weekPredictionMain.js" />"></script>
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/assets/css/myGlobalStyles.css"/>" rel="stylesheet">
 </head>
+
 <body>
 <jsp:include page="template/header.jsp"/>
 

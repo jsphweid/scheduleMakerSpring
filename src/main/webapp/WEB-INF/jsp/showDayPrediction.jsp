@@ -10,6 +10,7 @@
     <script src="<c:url value="/assets/js/dayPredictionJS/rgraph.moveablebargraph.min.js" />"></script>
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
+    <link href="<c:url value="/assets/css/myGlobalStyles.css"/>" rel="stylesheet">
 
 
 </head>

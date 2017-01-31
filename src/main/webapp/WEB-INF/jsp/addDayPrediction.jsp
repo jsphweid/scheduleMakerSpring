@@ -23,6 +23,7 @@
     <script src="<c:url value="/assets/js/dayPredictionJS/dayPredictionMain.js" />"></script>
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
+    <link href="<c:url value="/assets/css/myGlobalStyles.css"/>" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="template/header.jsp"/>

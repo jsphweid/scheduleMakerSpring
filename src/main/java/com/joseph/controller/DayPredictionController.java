@@ -75,7 +75,7 @@ public class DayPredictionController {
                                  @PathVariable int id) {
         if (!session.getSessionUsername().equals(dayPredictionService.getDayPrediction(id).getBelongsTo())) return "403";
         if (result.hasErrors()) {
-            return "editDayPrediction/" + id;
+            return "redirect:/editDayPrediction/" + id;
         } else {
             dayPredictionService.update(dayPrediction);
         }
