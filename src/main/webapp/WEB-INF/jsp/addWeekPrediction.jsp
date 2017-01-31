@@ -3,9 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Add Week Prediction</title>
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
-    <script src="<c:url value="/assets/js/weekPredictionJS/weekPredictionMain.js" />"></script>
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
 </head>
 <body>
@@ -15,12 +14,9 @@
 
 
 
-    <form:form action="/scheduleMaker/updateWeekPrediction" method="POST" modelAttribute="weekPrediction">
-
+    <form:form commandName="weekPrediction">
         <form:hidden path="belongsTo" />
         <form:hidden path="id" />
-
-
         <table>
             <tr>
                 <td>Title : <form:input path="title" /></td>
@@ -37,26 +33,10 @@
             </tr>
         </table>
 
-        <td><input class="btn btn-default" type="submit" value="Update" /></td>
+        <td><input class="btn btn-default" type="submit" value="Add Week Prediction" /></td>
     </form:form>
 
-    <tr>
-        <td><a href="delete/${weekPrediction.id}"><button class="btn btn-danger">Delete Week Prediction</button></a></td>
-    </tr>
 
-
-
-    <input type="hidden" id="jsonBom" value="${currentDaysAsJSONString}"/>
-
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-
-            attachValuesToSelect($("#jsonBom").val());
-
-        });
-
-    </script>
 
 </div>
 

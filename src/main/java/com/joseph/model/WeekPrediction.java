@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -94,32 +93,23 @@ public class WeekPrediction {
     @GeneratedValue
     private int id;
 
-//    private List<DayPrediction> dayPredictions = new ArrayList<DayPrediction>();
-
     @NotNull
     private String belongsTo;
 
     @NotEmpty
     private String title;
 
-    @NotNull
     private int day0Id;
 
-    @NotNull
     private int day1Id;
 
-    @NotNull
     private int day2Id;
 
-    @NotNull
     private int day3Id;
 
-    @NotNull
     private int day4Id;
 
-    @NotNull
     private int day5Id;
 
-    @NotNull
     private int day6Id;
 }

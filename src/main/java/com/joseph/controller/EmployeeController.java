@@ -63,7 +63,7 @@ public class EmployeeController {
     public String updateEmployee(@Valid @ModelAttribute("employee") Employee employee,
                                  BindingResult result) {
         if (result.hasErrors()) {
-            return "editEmployee/{id}";
+            return "redirect:/editEmployee/" + employee.getId();
         } else {
             employeeService.update(employee);
         }

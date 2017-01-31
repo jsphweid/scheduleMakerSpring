@@ -69,7 +69,7 @@ public class AddInitialData {
     
     public void addDayPredictions() {
         DayPrediction dp1 = new DayPrediction();
-        dp1.setTitle("generatedDayPrediction");
+        dp1.setTitle("1 day");
         dp1.setHour00(0);
         dp1.setHour01(0);
         dp1.setHour02(0);
@@ -98,7 +98,7 @@ public class AddInitialData {
         dayPredictionService.save(dp1);
 
         DayPrediction dp2 = new DayPrediction();
-        dp2.setTitle("generatedDayPrediction 2");
+        dp2.setTitle("another day");
         dp2.setHour00(0);
         dp2.setHour01(0);
         dp2.setHour02(0);
@@ -130,11 +130,11 @@ public class AddInitialData {
         WeekPrediction wp1 = new WeekPrediction();
         wp1.setTitle("week prediction 1");
         wp1.setBelongsTo("joseph");
-        wp1.setDay0Id(0);
+        wp1.setDay0Id(2);
         wp1.setDay1Id(1);
-        wp1.setDay2Id(0);
+        wp1.setDay2Id(2);
         wp1.setDay3Id(1);
-        wp1.setDay4Id(0);
+        wp1.setDay4Id(2);
         wp1.setDay5Id(1);
         wp1.setDay6Id(1);
         weekPredictionService.save(wp1);

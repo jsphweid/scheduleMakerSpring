@@ -57,7 +57,7 @@
 </form:form>
 
 <tr>
-    <td><a href="delete/${employee.id}"><button class="btn btn-danger">Delete Employee</button></td>
+    <td><a href="delete/${employee.id}"><button class="btn btn-danger">Delete Employee</button></a></td>
 </tr>
 
 

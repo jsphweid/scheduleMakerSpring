@@ -70,6 +70,10 @@
     </div>
 </div>
 
+    <tr>
+        <td><a href="delete/${dayPrediction.id}"><button class="btn btn-danger">Delete Day Prediction</button></a></td>
+    </tr>
+
 <script type="text/javascript">
     window.onload = function () {
         var rgraph = drawGraph({

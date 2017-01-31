@@ -38,7 +38,7 @@
 </form:form>
 
 <tr>
-    <td><a href="delete/${position.id}"><button class="btn btn-danger">Delete Position</button></td>
+    <td><a href="delete/${position.id}"><button class="btn btn-danger">Delete Position</button></a></td>
 </tr>
 
 

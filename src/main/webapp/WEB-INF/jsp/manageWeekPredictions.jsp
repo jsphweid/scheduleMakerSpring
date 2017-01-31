@@ -27,18 +27,35 @@
         <c:forEach items="${allWeekPredictions}" var="weekPrediction">
             <tr>
                 <td>${weekPrediction.title}</td>
-                <td>${weekPrediction.day0Id}</td>
-                <td>${weekPrediction.day1Id}</td>
-                <td>${weekPrediction.day2Id}</td>
-                <td>${weekPrediction.day3Id}</td>
-                <td>${weekPrediction.day4Id}</td>
-                <td>${weekPrediction.day5Id}</td>
-                <td>${weekPrediction.day6Id}</td>
+                <td>${idToTextMap[weekPrediction.day0Id]}</td>
+                <td>${idToTextMap[weekPrediction.day1Id]}</td>
+                <td>${idToTextMap[weekPrediction.day2Id]}</td>
+                <td>${idToTextMap[weekPrediction.day3Id]}</td>
+                <td>${idToTextMap[weekPrediction.day4Id]}</td>
+                <td>${idToTextMap[weekPrediction.day5Id]}</td>
+                <td>${idToTextMap[weekPrediction.day6Id]}</td>
                 <td><a class="btn btn-default" href="editWeekPrediction/${weekPrediction.id}">Edit</a></td>
             </tr>
         </c:forEach>
     </table>
 
+    <a href="addWeekPrediction.html">
+        <button class="btn btn-default">
+            Add New Week Prediction >>
+        </button>
+    </a>
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+
+
+        })
+
+    </script>
 
 
 </div>
