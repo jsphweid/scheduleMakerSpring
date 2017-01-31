@@ -12,6 +12,7 @@
 <body>
 <jsp:include page="template/header.jsp"/>
 <div class="container">
+    <form:errors path="*" cssClass="errorblock" element="div" />
 
 
 
@@ -29,6 +30,7 @@
         <tr>
             <td>Title : </td>
             <td><form:input path="title" /></td>
+            <form:errors path="title" cssClass="error" />
         </tr>
 
         <tr>

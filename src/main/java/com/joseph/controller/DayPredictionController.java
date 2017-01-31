@@ -42,8 +42,12 @@ public class DayPredictionController {
     }
 
     @RequestMapping(value = "/addDayPrediction", method = RequestMethod.POST)
-    public String addDayPrediction(@Valid @ModelAttribute("dayPrediction") DayPrediction dayPrediction, BindingResult result) {
+    public String addDayPrediction(@Valid
+                                   @ModelAttribute("dayPrediction") DayPrediction dayPrediction,
+                                   BindingResult result,
+                                   Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("dayPrediction", dayPrediction);
             return "addDayPrediction";
         } else {
             dayPredictionService.save(dayPrediction);

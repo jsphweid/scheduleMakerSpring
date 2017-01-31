@@ -13,6 +13,7 @@
 
 <div class="container">
 
+    <form:errors path="*" cssClass="errorblock" element="div" />
 
 
     <form:form commandName="weekPrediction">
@@ -21,6 +22,7 @@
         <table>
             <tr>
                 <td>Title : <form:input path="title" /></td>
+                <form:errors path="title" cssClass="error" />
                 <c:forEach begin="0" end="6" varStatus="loop">
                     <td>
                         <div class="form-group">

@@ -16,7 +16,7 @@ public class Position {
     @GeneratedValue
     private int id;
 
-    @NotNull
+    @NotEmpty
     private String title;
 
     public String getBelongsTo() {
