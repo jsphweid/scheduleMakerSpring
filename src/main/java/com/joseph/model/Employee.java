@@ -20,6 +20,21 @@ public class Employee {
 
     @ManyToMany
     @JoinTable(
+            name="employee_shift",
+            joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "shift_id", referencedColumnName = "shift_id"))
+    private Set<Shift> shifts;
+
+    public Set<Shift> getShifts() {
+        return shifts;
+    }
+
+    public void setShifts(Set<Shift> shifts) {
+        this.shifts = shifts;
+    }
+
+    @ManyToMany
+    @JoinTable(
             name="employee_position",
             joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "position_id", referencedColumnName = "position_id"))

@@ -1,9 +1,6 @@
 package com.joseph.service;
 
-import com.joseph.model.DayPrediction;
-import com.joseph.model.Employee;
-import com.joseph.model.Position;
-import com.joseph.model.WeekPrediction;
+import com.joseph.model.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +20,8 @@ public class AddInitialData {
     private DayPredictionService dayPredictionService;
     @Resource(name = "weekPredictionService")
     private WeekPredictionService weekPredictionService;
+    @Resource(name = "shiftService")
+    private ShiftService shiftService;
 
     public boolean isAdded = false;
 
@@ -167,20 +166,85 @@ public class AddInitialData {
         Position p3 = positionService.getPosition(3);
 
         Employee emp1 = employeeService.getEmployee(1);
+        Employee emp2 = employeeService.getEmployee(2);
+        Employee emp3 = employeeService.getEmployee(3);
+
+
         Set<Position> pList = new HashSet<Position>();
         pList.add(p1);
         pList.add(p3);
         emp1.setPositions(pList);
 
-        Employee emp2 = employeeService.getEmployee(2);
         Set<Position> pList2 = new HashSet<Position>();
         pList2.add(p1);
         emp2.setPositions(pList2);
 
-        Employee emp3 = employeeService.getEmployee(3);
         Set<Position> pList3 = new HashSet<Position>();
         pList3.add(p2);
         emp3.setPositions(pList3);
+        employeeService.save(emp1);
+        employeeService.save(emp2);
+        employeeService.save(emp3);
+    }
+
+    public void addShifts() {
+        Shift s1 = new Shift();
+        s1.setStartHour(4);
+        s1.setStartMinutes(15);
+        s1.setEndHour(0);
+        s1.setEndMinutes(0);
+
+        Shift s2 = new Shift();
+        s2.setStartHour(9);
+        s2.setStartMinutes(0);
+        s2.setEndHour(17);
+        s2.setEndMinutes(0);
+
+        s1.setBelongsTo("joseph");
+        s2.setBelongsTo("joseph");
+
+        shiftService.save(s1);
+        shiftService.save(s2);
+
+        Shift s3 = new Shift();
+        s3.setStartHour(4);
+        s3.setStartMinutes(15);
+        s3.setEndHour(0);
+        s3.setEndMinutes(0);
+
+        Shift s4 = new Shift();
+        s4.setStartHour(9);
+        s4.setStartMinutes(0);
+        s4.setEndHour(17);
+        s4.setEndMinutes(0);
+
+        s3.setBelongsTo("clayton");
+        s4.setBelongsTo("clayton");
+
+        shiftService.save(s3);
+        shiftService.save(s4);
+    }
+
+    public void addEmployeesShifts() {
+        Shift s1 = shiftService.getShift(1);
+        Shift s2 = shiftService.getShift(2);
+
+        Employee emp1 = employeeService.getEmployee(1);
+        Employee emp2 = employeeService.getEmployee(2);
+        Employee emp3 = employeeService.getEmployee(3);
+
+        Set<Shift> shiftSet1 = new HashSet<Shift>();
+        shiftSet1.add(s1);
+        shiftSet1.add(s2);
+
+        emp1.setShifts(shiftSet1);
+        emp3.setShifts(shiftSet1);
+
+        Set<Shift> shiftSet2 = new HashSet<Shift>();
+        shiftSet2.add(s2);
+
+        emp2.setShifts(shiftSet2);
+
         employeeService.save(emp1);
         employeeService.save(emp2);
         employeeService.save(emp3);

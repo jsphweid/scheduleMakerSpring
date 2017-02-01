@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FitnessTracker" target="1.5" />
-      <module name="scheduleMaker" target="1.5" />
+      <module name="scheduleMaker" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
