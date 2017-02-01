@@ -2,10 +2,7 @@ package com.joseph.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +11,7 @@ public class Position {
 
     @Id
     @GeneratedValue
+    @Column(name="position_id")
     private int id;
 
     @NotEmpty

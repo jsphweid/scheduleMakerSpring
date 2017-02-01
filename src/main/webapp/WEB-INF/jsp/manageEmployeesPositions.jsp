@@ -19,11 +19,32 @@
     <%--<form:errors path="firstName" cssClass="error" />--%>
 
 
-    <%-------------------------------------------%>
-    <%----------- INSERT CONTENT HERE -----------%>
-    <%-------------------------------------------%>
+    <table border="2" cellpadding="2">
+        <tr>
+            <th>Employee Name</th>
+            <c:forEach items="${positions}" var="position">
+                <th>${position.title}</th>
+            </c:forEach>
+        </tr>
+        <c:forEach items="${employees}" var="employee">
+            <tr>
+                <td>${employee.firstName} ${employee.lastName}</td>
+                <c:forEach items="${positions}" var="position">
+                    <td>
+                        <c:if test="${employee.positions.contains(position)}">
+                            &#x2714;
+                        </c:if>
+                    </td>
+                </c:forEach>
+            </tr>
+        </c:forEach>
+    </table>
 
-
+    <a href="editEmployeesPositions">
+        <button class="btn btn-default">
+            Edit >>
+        </button>
+    </a>
 
 </div>
 

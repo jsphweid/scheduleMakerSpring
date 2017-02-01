@@ -6,6 +6,8 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="employee")
@@ -13,7 +15,23 @@ public class Employee {
 
     @Id
     @GeneratedValue
+    @Column(name="employee_id")
     private int id;
+
+    @ManyToMany
+    @JoinTable(
+            name="employee_position",
+            joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "position_id", referencedColumnName = "position_id"))
+    private Set<Position> positions;
+
+    public Set<Position> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Set<Position> positions) {
+        this.positions = positions;
+    }
 
     @NotEmpty
     private String firstName;

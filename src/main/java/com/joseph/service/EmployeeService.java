@@ -1,8 +1,10 @@
 package com.joseph.service;
 
 import com.joseph.model.Employee;
+import com.joseph.model.Position;
 
 import java.util.List;
+import java.util.Set;
 
 public interface EmployeeService {
     List<Employee> findAllEmployees();
@@ -14,4 +16,7 @@ public interface EmployeeService {
     Employee update(Employee employee);
 
     void delete(int id);
+
+    void writeEmployeePositionChanges(String jsonChanges);
+
 }

@@ -23,6 +23,7 @@ public class LoginController {
             addInitialData.addPositions();
             addInitialData.addDayPredictions();
             addInitialData.addWeekPredictions();
+            addInitialData.addEmployeesPositions();
             addInitialData.isAdded = true;
         }
         return "login";

@@ -3,7 +3,6 @@ package com.joseph.controller;
 import com.joseph.model.DayPrediction;
 import com.joseph.service.DayPredictionService;
 import com.joseph.service.SessionService;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

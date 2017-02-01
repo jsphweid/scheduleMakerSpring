@@ -7,6 +7,10 @@ import com.joseph.model.WeekPrediction;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service("addInitialData")
 public class AddInitialData {
@@ -55,7 +59,6 @@ public class AddInitialData {
     }
 
     public void addPositions() {
-        System.out.println("adding new positions ----------->");
         Position p1 = new Position();
         p1.setTitle("joseph rolling");
         p1.setBelongsTo("joseph");
@@ -65,6 +68,12 @@ public class AddInitialData {
         p2.setTitle("clayton thinking");
         p2.setBelongsTo("clayton");
         positionService.save(p2);
+
+        Position p3 = new Position();
+        p3.setTitle("ovens");
+        p3.setBelongsTo("joseph");
+        positionService.save(p3);
+
     }
     
     public void addDayPredictions() {
@@ -150,6 +159,31 @@ public class AddInitialData {
         wp2.setDay5Id(1);
         wp2.setDay6Id(1);
         weekPredictionService.save(wp2);
+    }
+
+    public void addEmployeesPositions() {
+        Position p1 = positionService.getPosition(1);
+        Position p2 = positionService.getPosition(2);
+        Position p3 = positionService.getPosition(3);
+
+        Employee emp1 = employeeService.getEmployee(1);
+        Set<Position> pList = new HashSet<Position>();
+        pList.add(p1);
+        pList.add(p3);
+        emp1.setPositions(pList);
+
+        Employee emp2 = employeeService.getEmployee(2);
+        Set<Position> pList2 = new HashSet<Position>();
+        pList2.add(p1);
+        emp2.setPositions(pList2);
+
+        Employee emp3 = employeeService.getEmployee(3);
+        Set<Position> pList3 = new HashSet<Position>();
+        pList3.add(p2);
+        emp3.setPositions(pList3);
+        employeeService.save(emp1);
+        employeeService.save(emp2);
+        employeeService.save(emp3);
     }
 
 }
