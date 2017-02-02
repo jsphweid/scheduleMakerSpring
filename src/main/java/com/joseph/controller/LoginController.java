@@ -24,8 +24,8 @@ public class LoginController {
             addInitialData.addDayPredictions();
             addInitialData.addWeekPredictions();
             addInitialData.addEmployeesPositions();
+            addInitialData.addSchedules();
             addInitialData.addShifts();
-            addInitialData.addEmployeesShifts();
             addInitialData.isAdded = true;
         }
         return "login";

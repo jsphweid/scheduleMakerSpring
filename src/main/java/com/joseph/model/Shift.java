@@ -1,6 +1,7 @@
 package com.joseph.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,42 @@ public class Shift {
     private int startMinutes;
     @NotNull
     private int endMinutes;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    @Range(min = 0, max = 6)
+    @NotNull
+    private int dayId;
+
+    public int getDayId() {
+        return dayId;
+    }
+
+    public void setDayId(int dayId) {
+        this.dayId = dayId;
+    }
 
     @NotNull
     private String belongsTo;
@@ -65,7 +102,6 @@ public class Shift {
     public void setEndMinutes(int endMinutes) {
         this.endMinutes = endMinutes;
     }
-
 
     public int getId() {
         return id;

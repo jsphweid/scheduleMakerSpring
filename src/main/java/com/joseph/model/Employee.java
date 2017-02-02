@@ -18,20 +18,16 @@ public class Employee {
     @Column(name="employee_id")
     private int id;
 
-    @ManyToMany
-    @JoinTable(
-            name="employee_shift",
-            joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "shift_id", referencedColumnName = "shift_id"))
-    private Set<Shift> shifts;
-
-    public Set<Shift> getShifts() {
+    public List<Shift> getShifts() {
         return shifts;
     }
 
-    public void setShifts(Set<Shift> shifts) {
+    public void setShifts(List<Shift> shifts) {
         this.shifts = shifts;
     }
+
+    @OneToMany(mappedBy="employee")
+    private List<Shift> shifts;
 
     @ManyToMany
     @JoinTable(

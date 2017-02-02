@@ -39,6 +39,9 @@
     <tr>
         <td><a class="btn btn-default" href="manageEmployeesPositions.html">Manage Employee Positions >></a></td>
     </tr>
+    <tr>
+        <td><a class="btn btn-default" href="manageSchedules.html">Manage Schedules >></a></td>
+    </tr>
 </table>
 
 <a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>

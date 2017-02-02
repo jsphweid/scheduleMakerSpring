@@ -4,9 +4,7 @@ import com.joseph.model.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service("addInitialData")
@@ -22,6 +20,8 @@ public class AddInitialData {
     private WeekPredictionService weekPredictionService;
     @Resource(name = "shiftService")
     private ShiftService shiftService;
+    @Resource(name = "scheduleService")
+    private ScheduleService scheduleService;
 
     public boolean isAdded = false;
 
@@ -187,23 +187,40 @@ public class AddInitialData {
         employeeService.save(emp3);
     }
 
+    public void addSchedules() {
+        Schedule s1 = new Schedule();
+        s1.setTitle("joseph's first schedule");
+        s1.setBelongsTo("joseph");
+        s1.setWeekPrediction(weekPredictionService.getById(1));
+        scheduleService.save(s1);
+
+        Schedule s2 = new Schedule();
+        s2.setTitle("clayton's first schedule");
+        s2.setBelongsTo("clayton");
+        scheduleService.save(s2);
+    }
+
     public void addShifts() {
         Shift s1 = new Shift();
         s1.setStartHour(4);
         s1.setStartMinutes(15);
         s1.setEndHour(0);
         s1.setEndMinutes(0);
+        s1.setDayId(0);
+        s1.setEmployee(employeeService.getEmployee(1));
+        s1.setBelongsTo("joseph");
+        s1.setSchedule(scheduleService.getScheduleById(1));
+        shiftService.save(s1);
 
         Shift s2 = new Shift();
         s2.setStartHour(9);
         s2.setStartMinutes(0);
         s2.setEndHour(17);
         s2.setEndMinutes(0);
-
-        s1.setBelongsTo("joseph");
+        s2.setDayId(0);
+        s2.setSchedule(scheduleService.getScheduleById(1));
+        s2.setEmployee(employeeService.getEmployee(2));
         s2.setBelongsTo("joseph");
-
-        shiftService.save(s1);
         shiftService.save(s2);
 
         Shift s3 = new Shift();
@@ -211,43 +228,47 @@ public class AddInitialData {
         s3.setStartMinutes(15);
         s3.setEndHour(0);
         s3.setEndMinutes(0);
+        s3.setDayId(0);
+        s3.setEmployee(employeeService.getEmployee(3));
+        s3.setSchedule(scheduleService.getScheduleById(2));
+        s3.setBelongsTo("clayton");
+        shiftService.save(s3);
 
         Shift s4 = new Shift();
         s4.setStartHour(9);
         s4.setStartMinutes(0);
         s4.setEndHour(17);
         s4.setEndMinutes(0);
-
-        s3.setBelongsTo("clayton");
+        s4.setDayId(0);
+        s4.setEmployee(employeeService.getEmployee(3));
         s4.setBelongsTo("clayton");
-
-        shiftService.save(s3);
+        s4.setSchedule(scheduleService.getScheduleById(2));
         shiftService.save(s4);
     }
 
-    public void addEmployeesShifts() {
-        Shift s1 = shiftService.getShift(1);
-        Shift s2 = shiftService.getShift(2);
-
-        Employee emp1 = employeeService.getEmployee(1);
-        Employee emp2 = employeeService.getEmployee(2);
-        Employee emp3 = employeeService.getEmployee(3);
-
-        Set<Shift> shiftSet1 = new HashSet<Shift>();
-        shiftSet1.add(s1);
-        shiftSet1.add(s2);
-
-        emp1.setShifts(shiftSet1);
-        emp3.setShifts(shiftSet1);
-
-        Set<Shift> shiftSet2 = new HashSet<Shift>();
-        shiftSet2.add(s2);
-
-        emp2.setShifts(shiftSet2);
-
-        employeeService.save(emp1);
-        employeeService.save(emp2);
-        employeeService.save(emp3);
-    }
+//    public void addSchedulesEmployeesShifts() {
+//        Shift s1 = shiftService.getShift(1);
+//        Shift s2 = shiftService.getShift(2);
+//
+//        Employee emp1 = employeeService.getEmployee(1);
+//        Employee emp2 = employeeService.getEmployee(2);
+//        Employee emp3 = employeeService.getEmployee(3);
+//
+//        Set<Shift> shiftSet1 = new HashSet<Shift>();
+//        shiftSet1.add(s1);
+//        shiftSet1.add(s2);
+//
+//        emp1.setShifts(shiftSet1);
+//        emp3.setShifts(shiftSet1);
+//
+//        Set<Shift> shiftSet2 = new HashSet<Shift>();
+//        shiftSet2.add(s2);
+//
+//        emp2.setShifts(shiftSet2);
+//
+//        employeeService.save(emp1);
+//        employeeService.save(emp2);
+//        employeeService.save(emp3);
+//    }
 
 }

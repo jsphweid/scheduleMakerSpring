@@ -5,4 +5,5 @@ target
 .project
 .settings
 .idea
+.idea/
 *.iml
