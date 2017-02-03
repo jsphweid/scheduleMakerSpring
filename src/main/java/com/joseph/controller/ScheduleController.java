@@ -52,4 +52,9 @@ public class ScheduleController {
 
     }
 
+    @RequestMapping(value = "/getEmployees", method = RequestMethod.GET)
+    public @ResponseBody List<Employee> getEmployees() {
+        return employeeService.findAllEmployees();
+    }
+
 }
