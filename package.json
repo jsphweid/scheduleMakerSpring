@@ -1,0 +1,27 @@
+{
+  "name": "schedule-maker-spring",
+  "version": "0.1.0",
+  "description": "A tool to use when putting together a schedule at a food joint.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsphweid/scheduleMakerSpring.git"
+  },
+  "keywords": [
+    "schedule",
+    "maker"
+  ],
+  "author": "joseph weidinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsphweid/scheduleMakerSpring/issues"
+  },
+  "homepage": "https://github.com/jsphweid/scheduleMakerSpring#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
