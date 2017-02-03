@@ -1,5 +1,6 @@
 package com.joseph.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
@@ -26,6 +27,7 @@ public class Employee {
         this.shifts = shifts;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy="employee")
     private List<Shift> shifts;
 

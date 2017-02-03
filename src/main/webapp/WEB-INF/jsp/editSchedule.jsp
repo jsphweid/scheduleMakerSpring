@@ -66,6 +66,17 @@
 
     </form>
 
+    <script type="text/javascript">
+        window.onload = function() {
+
+            function example(vari) {
+                debugger;
+            }
+
+            <%--example(${raw(schedule)});--%>
+        };
+    </script>
+
 
 </div>
 

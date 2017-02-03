@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("shiftService")
 public class ShiftServiceImpl implements ShiftService {
 
@@ -15,6 +17,10 @@ public class ShiftServiceImpl implements ShiftService {
     @Transactional
     public Shift save(Shift shift) {
         return shiftRepository.save(shift);
+    }
+
+    public List<Shift> getAllShifts() {
+        return shiftRepository.getAll();
     }
 
     public Shift getShift(int id) {

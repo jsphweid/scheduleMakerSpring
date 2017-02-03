@@ -18,8 +18,7 @@ public class Schedule {
     @NotBlank
     private String title;
 
-    // i believe that this is correct... or close at least
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "weekPrediction_id")
     private WeekPrediction weekPrediction;
 

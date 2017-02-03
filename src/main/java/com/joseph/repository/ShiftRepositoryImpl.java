@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository("shiftRepository")
 public class ShiftRepositoryImpl implements ShiftRepository {
@@ -28,6 +29,12 @@ public class ShiftRepositoryImpl implements ShiftRepository {
                 .setParameter("id", id)
                 .getSingleResult();
 
+    }
+
+    public List<Shift> getAll() {
+        return em.createQuery("select s from Shift s where s.belongsTo = :owner", Shift.class)
+                .setParameter("owner", session.getSessionUsername())
+                .getResultList();
     }
 
 

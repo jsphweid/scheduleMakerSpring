@@ -1,5 +1,6 @@
 package com.joseph.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -28,6 +29,7 @@ public class Shift {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
