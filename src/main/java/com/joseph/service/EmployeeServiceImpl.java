@@ -2,6 +2,7 @@ package com.joseph.service;
 
 import com.joseph.model.Employee;
 import com.joseph.model.Position;
+import com.joseph.model.Shift;
 import com.joseph.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private PositionService positionService;
+    @Autowired
+    private ShiftService shiftService;
 
     public List<Employee> findAllEmployees() {
         return employeeRepository.loadAll();
@@ -35,6 +38,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     public void delete(int id) {
+        // TODO: shouldn't have to do this...
+        // delete all associated positions first
+        Employee emp = employeeRepository.getEmpById(id);
+        Set<Position> positions = emp.getPositions();
+        positions.clear();
+        emp.setPositions(positions);
+        employeeRepository.save(emp);
+        shiftService.deleteShiftsBelongingToEmp(id);
+
+
+        // then finally delete
         employeeRepository.delete(id);
     }
 
@@ -43,6 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         // empty it
         deleteAllPositionsInEachEmployee(employeeRepository.loadAll());
         // process
+        // TODO: Refactor this to use ajax and not passing strings back and forth
         String[] todos = jsonChanges.split(",");
         for (String todo : todos) {
             String[] empPoses = todo.split("-");

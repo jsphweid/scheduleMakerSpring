@@ -26,4 +26,8 @@ public class ShiftServiceImpl implements ShiftService {
     public Shift getShift(int id) {
         return shiftRepository.getShiftById(id);
     }
+
+    public void deleteShiftsBelongingToEmp(int id) {
+        shiftRepository.deleteShiftsBelongingToEmp(id);
+    }
 }

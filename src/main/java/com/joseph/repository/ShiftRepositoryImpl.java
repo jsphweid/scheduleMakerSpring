@@ -37,5 +37,11 @@ public class ShiftRepositoryImpl implements ShiftRepository {
                 .getResultList();
     }
 
+    public void deleteShiftsBelongingToEmp(int id) {
+        em.createQuery("Delete from Shift s where s.employee.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
 
 }

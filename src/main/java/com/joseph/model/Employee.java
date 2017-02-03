@@ -28,10 +28,10 @@ public class Employee {
     }
 
     @JsonIgnore
-    @OneToMany(mappedBy="employee")
+    @OneToMany(mappedBy="employee", cascade = CascadeType.ALL)
     private List<Shift> shifts;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="employee_position",
             joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),

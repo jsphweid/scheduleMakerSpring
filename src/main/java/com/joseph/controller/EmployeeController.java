@@ -71,7 +71,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/editEmployee/delete/{id}", method = RequestMethod.GET)
-    public String deleteEmployee(@PathVariable int id, Model model) {
+    public String deleteEmployee(@PathVariable int id) {
         if (!session.getSessionUsername().equals(employeeService.getEmployee(id).getBelongsTo())) return "403";
         employeeService.delete(id);
         return "redirect:/manageEmployees.html";

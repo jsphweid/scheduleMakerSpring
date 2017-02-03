@@ -28,7 +28,6 @@ public class Position {
     @NotNull
     private String belongsTo;
 
-
     public int getId() {
         return id;
     }

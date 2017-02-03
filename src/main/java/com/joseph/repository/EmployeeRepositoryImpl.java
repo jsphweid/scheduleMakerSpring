@@ -1,17 +1,15 @@
 package com.joseph.repository;
 
 import com.joseph.model.Employee;
+import com.joseph.model.Position;
 import com.joseph.service.SessionService;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Set;
 
 @Repository("employeeRepository")
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -41,8 +39,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     public void delete(int id) {
-        em.createQuery("DELETE FROM Employee e WHERE e.id = :_id")
-                .setParameter("_id", id)
+        em.createQuery("DELETE FROM Employee e WHERE e.id = :id")
+                .setParameter("id", id)
                 .executeUpdate();
     }
 

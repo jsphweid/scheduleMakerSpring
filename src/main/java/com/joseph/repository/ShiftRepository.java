@@ -10,4 +10,6 @@ public interface ShiftRepository {
     Shift getShiftById(int id);
 
     List<Shift> getAll();
+
+    void deleteShiftsBelongingToEmp(int id);
 }

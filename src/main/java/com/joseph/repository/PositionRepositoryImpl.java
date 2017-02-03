@@ -44,8 +44,8 @@ public class PositionRepositoryImpl implements PositionRepository {
     }
 
     public void delete(int id) {
-        em.createQuery("DELETE FROM Position p WHERE p.id = :_id")
-                .setParameter("_id", id)
+        em.createQuery("DELETE FROM Position p WHERE p.id = :id")
+                .setParameter("id", id)
                 .executeUpdate();
     }
 }

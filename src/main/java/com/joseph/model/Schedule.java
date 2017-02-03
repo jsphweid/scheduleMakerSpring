@@ -18,7 +18,7 @@ public class Schedule {
     @NotBlank
     private String title;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "weekPrediction_id")
     private WeekPrediction weekPrediction;
 
