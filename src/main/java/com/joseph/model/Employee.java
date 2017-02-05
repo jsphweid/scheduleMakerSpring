@@ -27,7 +27,7 @@ public class Employee {
         this.shifts = shifts;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy="employee", cascade = CascadeType.ALL)
     private List<Shift> shifts;
 

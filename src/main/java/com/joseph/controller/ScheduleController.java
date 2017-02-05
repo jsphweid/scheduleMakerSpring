@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class ScheduleController {
@@ -39,9 +41,10 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.GET)
-    public String editSchedule(@PathVariable int id) {
+    public String editSchedule(@PathVariable int id, Model model) {
         Schedule schedule = scheduleService.getScheduleById(id);
         if (!sessionService.getSessionUsername().equals(schedule.getBelongsTo())) return "403.html";
+        model.addAttribute("id", id);
         return "editSchedule";
     }
 

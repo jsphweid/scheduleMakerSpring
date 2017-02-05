@@ -36,13 +36,13 @@ public class WeekPredictionServiceImpl implements WeekPredictionService {
 
     public String getDaysAsJSON(WeekPrediction w) {
         return "{" +
-                "\'day0Id\': " + w.getDay0Id() + "," +
-                "\'day1Id\': " + w.getDay1Id() + "," +
-                "\'day2Id\': " + w.getDay2Id() + "," +
-                "\'day3Id\': " + w.getDay3Id() + "," +
-                "\'day4Id\': " + w.getDay4Id() + "," +
-                "\'day5Id\': " + w.getDay5Id() + "," +
-                "\'day6Id\': " + w.getDay6Id() +
+                "\'day0Id\': " + w.getDay0().getId() + "," +
+                "\'day1Id\': " + w.getDay1().getId() + "," +
+                "\'day2Id\': " + w.getDay2().getId() + "," +
+                "\'day3Id\': " + w.getDay3().getId() + "," +
+                "\'day4Id\': " + w.getDay4().getId() + "," +
+                "\'day5Id\': " + w.getDay5().getId() + "," +
+                "\'day6Id\': " + w.getDay6().getId() +
                 "}";
     }
 

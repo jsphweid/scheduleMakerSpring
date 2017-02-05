@@ -32,62 +32,6 @@ public class WeekPrediction {
         this.title = title;
     }
 
-    public int getDay0Id() {
-        return day0Id;
-    }
-
-    public void setDay0Id(int day0Id) {
-        this.day0Id = day0Id;
-    }
-
-    public int getDay1Id() {
-        return day1Id;
-    }
-
-    public void setDay1Id(int day1Id) {
-        this.day1Id = day1Id;
-    }
-
-    public int getDay2Id() {
-        return day2Id;
-    }
-
-    public void setDay2Id(int day2Id) {
-        this.day2Id = day2Id;
-    }
-
-    public int getDay3Id() {
-        return day3Id;
-    }
-
-    public void setDay3Id(int day3Id) {
-        this.day3Id = day3Id;
-    }
-
-    public int getDay4Id() {
-        return day4Id;
-    }
-
-    public void setDay4Id(int day4Id) {
-        this.day4Id = day4Id;
-    }
-
-    public int getDay5Id() {
-        return day5Id;
-    }
-
-    public void setDay5Id(int day5Id) {
-        this.day5Id = day5Id;
-    }
-
-    public int getDay6Id() {
-        return day6Id;
-    }
-
-    public void setDay6Id(int day6Id) {
-        this.day6Id = day6Id;
-    }
-
     @Id
     @GeneratedValue
     private int id;
@@ -98,17 +42,87 @@ public class WeekPrediction {
     @NotEmpty
     private String title;
 
-    private int day0Id;
+    public DayPrediction getDay0() {
+        return day0;
+    }
 
-    private int day1Id;
+    public void setDay0(DayPrediction day0) {
+        this.day0 = day0;
+    }
 
-    private int day2Id;
+    public DayPrediction getDay1() {
+        return day1;
+    }
 
-    private int day3Id;
+    public void setDay1(DayPrediction day1) {
+        this.day1 = day1;
+    }
 
-    private int day4Id;
+    public DayPrediction getDay2() {
+        return day2;
+    }
 
-    private int day5Id;
+    public void setDay2(DayPrediction day2) {
+        this.day2 = day2;
+    }
 
-    private int day6Id;
+    public DayPrediction getDay3() {
+        return day3;
+    }
+
+    public void setDay3(DayPrediction day3) {
+        this.day3 = day3;
+    }
+
+    public DayPrediction getDay4() {
+        return day4;
+    }
+
+    public void setDay4(DayPrediction day4) {
+        this.day4 = day4;
+    }
+
+    public DayPrediction getDay5() {
+        return day5;
+    }
+
+    public void setDay5(DayPrediction day5) {
+        this.day5 = day5;
+    }
+
+    public DayPrediction getDay6() {
+        return day6;
+    }
+
+    public void setDay6(DayPrediction day6) {
+        this.day6 = day6;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day0Id")
+    private DayPrediction day0;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day1Id")
+    private DayPrediction day1;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day2Id")
+    private DayPrediction day2;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day3Id")
+    private DayPrediction day3;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day4Id")
+    private DayPrediction day4;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day5Id")
+    private DayPrediction day5;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "day6Id")
+    private DayPrediction day6;
 }

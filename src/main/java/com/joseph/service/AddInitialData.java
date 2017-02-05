@@ -138,25 +138,25 @@ public class AddInitialData {
         WeekPrediction wp1 = new WeekPrediction();
         wp1.setTitle("week prediction 1");
         wp1.setBelongsTo("joseph");
-        wp1.setDay0Id(2);
-        wp1.setDay1Id(1);
-        wp1.setDay2Id(2);
-        wp1.setDay3Id(1);
-        wp1.setDay4Id(2);
-        wp1.setDay5Id(1);
-        wp1.setDay6Id(1);
+        wp1.setDay0(dayPredictionService.getDayPrediction(1));
+        wp1.setDay1(dayPredictionService.getDayPrediction(1));
+        wp1.setDay2(dayPredictionService.getDayPrediction(2));
+        wp1.setDay3(dayPredictionService.getDayPrediction(1));
+        wp1.setDay4(dayPredictionService.getDayPrediction(2));
+        wp1.setDay5(dayPredictionService.getDayPrediction(1));
+        wp1.setDay6(dayPredictionService.getDayPrediction(1));
         weekPredictionService.save(wp1);
 
         WeekPrediction wp2 = new WeekPrediction();
         wp2.setTitle("week prediction 1");
         wp2.setBelongsTo("joseph");
-        wp2.setDay0Id(1);
-        wp2.setDay1Id(1);
-        wp2.setDay2Id(1);
-        wp2.setDay3Id(1);
-        wp2.setDay4Id(1);
-        wp2.setDay5Id(1);
-        wp2.setDay6Id(1);
+        wp2.setDay0(dayPredictionService.getDayPrediction(1));
+        wp2.setDay1(dayPredictionService.getDayPrediction(1));
+        wp2.setDay2(dayPredictionService.getDayPrediction(1));
+        wp2.setDay3(dayPredictionService.getDayPrediction(1));
+        wp2.setDay4(dayPredictionService.getDayPrediction(1));
+        wp2.setDay5(dayPredictionService.getDayPrediction(1));
+        wp2.setDay6(dayPredictionService.getDayPrediction(1));
         weekPredictionService.save(wp2);
     }
 
@@ -202,7 +202,7 @@ public class AddInitialData {
 
     public void addShifts() {
         Shift s1 = new Shift();
-        s1.setStartHour(4);
+        s1.setStartHour(16);
         s1.setStartMinutes(15);
         s1.setEndHour(0);
         s1.setEndMinutes(0);
@@ -211,6 +211,17 @@ public class AddInitialData {
         s1.setBelongsTo("joseph");
         s1.setSchedule(scheduleService.getScheduleById(1));
         shiftService.save(s1);
+
+        Shift s1p5 = new Shift();
+        s1p5.setStartHour(10);
+        s1p5.setStartMinutes(0);
+        s1p5.setEndHour(12);
+        s1p5.setEndMinutes(30);
+        s1p5.setDayId(0);
+        s1p5.setEmployee(employeeService.getEmployee(1));
+        s1p5.setBelongsTo("joseph");
+        s1p5.setSchedule(scheduleService.getScheduleById(1));
+        shiftService.save(s1p5);
 
         Shift s2 = new Shift();
         s2.setStartHour(9);

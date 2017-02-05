@@ -4,7 +4,9 @@
   "description": "A tool to use when putting together a schedule at a food joint.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib",
+    "watch": "webpack --watch -d"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,17 @@
   "homepage": "https://github.com/jsphweid/scheduleMakerSpring#readme",
   "dependencies": {
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-modal": "^1.6.5",
+    "webpack": "^1.12.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
+    "babel-cli": "^6.22.2",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0"
   }
 }
