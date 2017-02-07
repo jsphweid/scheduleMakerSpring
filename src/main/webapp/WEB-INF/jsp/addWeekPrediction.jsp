@@ -27,7 +27,7 @@
                     <td>
                         <div class="form-group">
                             <label for="selectLabel">Pick Day Prediction</label>
-                            <form:select id="select${loop.index}" path="day${loop.index}Id">
+                            <form:select id="select${loop.index}" path="day${loop.index}.id">
                                 <form:options items="${allDayPredictions}" itemValue="id" itemLabel="title" />
                             </form:select>
                         </div>

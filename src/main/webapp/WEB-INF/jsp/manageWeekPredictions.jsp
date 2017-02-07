@@ -28,13 +28,13 @@
         <c:forEach items="${allWeekPredictions}" var="weekPrediction">
             <tr>
                 <td>${weekPrediction.title}</td>
-                <td>${idToTextMap[weekPrediction.day0Id]}</td>
-                <td>${idToTextMap[weekPrediction.day1Id]}</td>
-                <td>${idToTextMap[weekPrediction.day2Id]}</td>
-                <td>${idToTextMap[weekPrediction.day3Id]}</td>
-                <td>${idToTextMap[weekPrediction.day4Id]}</td>
-                <td>${idToTextMap[weekPrediction.day5Id]}</td>
-                <td>${idToTextMap[weekPrediction.day6Id]}</td>
+                <td>${idToTextMap[weekPrediction.day0.id]}</td>
+                <td>${idToTextMap[weekPrediction.day1.id]}</td>
+                <td>${idToTextMap[weekPrediction.day2.id]}</td>
+                <td>${idToTextMap[weekPrediction.day3.id]}</td>
+                <td>${idToTextMap[weekPrediction.day4.id]}</td>
+                <td>${idToTextMap[weekPrediction.day5.id]}</td>
+                <td>${idToTextMap[weekPrediction.day6.id]}</td>
                 <td><a class="btn btn-default" href="editWeekPrediction/${weekPrediction.id}">Edit</a></td>
             </tr>
         </c:forEach>

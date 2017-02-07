@@ -26,7 +26,6 @@ public class WeekPredictionController {
     @Autowired
     private DayPredictionService dayPredictionService;
 
-
     @Autowired
     private SessionService session;
 
