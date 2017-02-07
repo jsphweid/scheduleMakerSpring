@@ -12,4 +12,6 @@ public interface ShiftService {
     Shift getShift(int id);
 
     void deleteShiftsBelongingToEmp(int id);
+
+    void delete(int id);
 }

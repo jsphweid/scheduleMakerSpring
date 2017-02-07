@@ -12,4 +12,6 @@ public interface ShiftRepository {
     List<Shift> getAll();
 
     void deleteShiftsBelongingToEmp(int id);
+
+    void delete(int id);
 }

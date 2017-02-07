@@ -20,6 +20,7 @@ export default class Row extends React.Component {
                            emp={self.props.thisEmployee}
                            handleSaveShift={self.props.handleSaveShift}
                            handleCreateShift={self.props.handleCreateShift}
+                           handleDeleteShift={self.props.handleDeleteShift}
             />)
         });
 

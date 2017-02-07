@@ -30,4 +30,9 @@ public class ShiftServiceImpl implements ShiftService {
     public void deleteShiftsBelongingToEmp(int id) {
         shiftRepository.deleteShiftsBelongingToEmp(id);
     }
+
+    @Transactional
+    public void delete(int id) {
+        shiftRepository.delete(id);
+    }
 }

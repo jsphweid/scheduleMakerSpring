@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
 import com.joseph.types.ExistingShift;
+import com.joseph.types.IntInt;
 import com.joseph.types.NewShift;
 import com.joseph.types.TitleId;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -140,8 +142,32 @@ public class ScheduleController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "error";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/editSchedule/deleteShift", method = RequestMethod.POST)
+    public String deleteShift(@RequestBody String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
+        try {
+            IntInt intInt = mapper.readValue(json, IntInt.class);
+            Employee employee = employeeService.getEmployee(intInt.empId);
+            List<Shift> shifts = employee.getShifts();
+                for (Iterator<Shift> iter = shifts.listIterator(); iter.hasNext(); ) {
+                Shift shift = iter.next();
+                if (shift.getId() == intInt.shiftId) {
+                    iter.remove();
+                    shiftService.delete(shift.getId());
+                }
+            }
+            employeeService.save(employee);
+            return mapper.writeValueAsString(shifts);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

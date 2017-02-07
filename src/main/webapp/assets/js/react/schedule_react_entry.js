@@ -18,6 +18,7 @@ export default class Main extends React.Component {
         this.handleSetNewTitle = this.handleSetNewTitle.bind(this);
         this.handleSaveShift = this.handleSaveShift.bind(this);
         this.handleCreateShift = this.handleCreateShift.bind(this);
+        this.handleDeleteShift = this.handleDeleteShift.bind(this);
     }
 
     getEmployeeRef(empId) {
@@ -96,6 +97,20 @@ export default class Main extends React.Component {
         });
     }
 
+    handleDeleteShift(obj) {
+        let data = {};
+        let self = this;
+        data["shiftId"] = obj.id;
+        data["empId"] = obj.employee;
+        this.postJSON("deleteShift", data, function(returnData) {
+            let newShifts = JSON.parse(returnData);
+            let emp = self.getEmployeeRef(obj.employee);
+            emp.shifts = newShifts;
+            self.setState({
+                employeeArray: self.state.employeeArray
+            });
+        });
+    }
 
     handleSetNewTitle(title) {
         let data = {};
@@ -125,6 +140,7 @@ export default class Main extends React.Component {
                         <Table employeeArray={this.state.employeeArray}
                                handleSaveShift={this.handleSaveShift}
                                handleCreateShift={this.handleCreateShift}
+                               handleDeleteShift={this.handleDeleteShift}
                         />
                     </div>
                     <div>

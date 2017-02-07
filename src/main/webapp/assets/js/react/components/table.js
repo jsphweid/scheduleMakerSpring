@@ -32,6 +32,7 @@ export default class Table extends React.Component {
                              thisEmployee={val}
                              handleSaveShift={this.props.handleSaveShift}
                              handleCreateShift={this.props.handleCreateShift}
+                             handleDeleteShift={this.props.handleDeleteShift}
                         />
                     )}
                     </tbody>

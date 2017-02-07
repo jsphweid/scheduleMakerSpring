@@ -19,23 +19,13 @@ export default class Cell extends React.Component {
         this.props.handleCreateShift(this.props.day, this.props.emp.id);
     }
 
-    handleDeleteShift(obj) {
-        let i = this.props.emp.shifts.indexOf(obj);
-        let relevantShifts = this.state.relevantShifts;
-        relevantShifts.splice(i, 1);
-        this.setState({
-            relevantShifts: relevantShifts
-        });
-        this.props.emp.shifts.splice(i, 1);
-    }
-
     render() {
         return (
             <td>
                 {this.props.relevantShifts.map(shift =>
                     <Shift key={shift.id.toString()}
                            shift={shift}
-                           handleDeleteShift={this.handleDeleteShift}
+                           handleDeleteShift={this.props.handleDeleteShift}
                            handleSaveShift={this.props.handleSaveShift}
                     />
                 )}
