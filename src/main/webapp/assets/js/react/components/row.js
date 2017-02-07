@@ -18,6 +18,8 @@ export default class Row extends React.Component {
                            day={self.props.day}
                            relevantShifts={relevantShifts}
                            emp={self.props.thisEmployee}
+                           handleSaveShift={self.props.handleSaveShift}
+                           handleCreateShift={self.props.handleCreateShift}
             />)
         });
 

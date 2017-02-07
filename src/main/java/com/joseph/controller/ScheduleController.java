@@ -1,19 +1,22 @@
 package com.joseph.controller;
 
+
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
+import com.joseph.types.ExistingShift;
 import com.joseph.types.TitleId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Controller
 public class ScheduleController {
@@ -76,13 +79,37 @@ public class ScheduleController {
 
     @ResponseBody
     @RequestMapping(value = "/editSchedule/setNewTitle", method = RequestMethod.POST)
-    public void setNewTitle(@RequestParam("data") String json) {
+    public void setNewTitle(@RequestBody String json) {
 
-        System.out.println(json);
-
-//        ObjectMapper mapper = new ObjectMapper();
-//        TitleId obj = mapper.readValue(json, TitleId.class);
-
-
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        try {
+            TitleId obj = mapper.readValue(json, TitleId.class);
+            Schedule schedule = scheduleService.getScheduleById(obj.id);
+            schedule.setTitle(obj.title);
+            scheduleService.save(schedule);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/editSchedule/editExistingShift", method = RequestMethod.POST)
+    public void editExistingShift(@RequestBody String json) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        try {
+            ExistingShift obj = mapper.readValue(json, ExistingShift.class);
+            Shift shift = shiftService.getShift(obj.id);
+            shift.setStartHour(obj.startHour);
+            shift.setStartMinutes(obj.startMinutes);
+            shift.setEndHour(obj.endHour);
+            shift.setEndMinutes(obj.endMinutes);
+            shiftService.save(shift);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

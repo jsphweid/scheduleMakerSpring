@@ -9,11 +9,15 @@ export default class Main extends React.Component {
 
     constructor() {
         super();
+
         this.state = {
-            employeeMap: undefined,
             employeeArray: undefined,
             scheduleData: undefined
         };
+
+        this.handleSetNewTitle = this.handleSetNewTitle.bind(this);
+        this.handleSaveShift = this.handleSaveShift.bind(this);
+        this.handleCreateShift = this.handleCreateShift.bind(this);
     }
 
     testButton() {
@@ -32,31 +36,55 @@ export default class Main extends React.Component {
     postJSON(url, data, callback) {
         return $.ajax({
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             'type': 'POST',
             'url': url,
             'data': JSON.stringify(data),
-            'dataType': 'json',
             'success': callback
+        }).done(function() {
+            console.log("POST successful");
+        }).fail(function() {
+            console.log("POST failed............")
         });
-    };
+    }
+
+    handleSaveShift(id, empId, startHour, startMinutes, endHour, endMinutes) {
+        let data = {};
+        data["id"] = id;
+        data["startHour"] = startHour;
+        data["startMinutes"] = startMinutes;
+        data["endHour"] = endHour;
+        data["endMinutes"] = endMinutes;
+        this.postJSON("editExistingShift", data);
+
+        // TODO: what's a better way to update the state here?
+        for (let i = 0; i < this.state.employeeArray.length; i++) {
+            if (this.state.employeeArray[i].id === empId) {
+                let emp = this.state.employeeArray[i];
+                for (let j = 0; j < emp.shifts.length; j++) {
+                    if (emp.shifts[j].id = id) {
+                        let shift = emp.shifts[j];
+                        shift.startHour = startHour;
+                        shift.startMinutes = startMinutes;
+                        shift.endHour = endHour;
+                        shift.endMinutes = endMinutes;
+                    }
+                }
+            }
+        }
+    }
+
+    handleCreateShift() {
+        debugger;
+    }
+
 
     handleSetNewTitle(title) {
         let data = {};
         data["title"] = title;
-        data["id"] = this.scheduleData.id;
-        $.ajax({
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            'type': 'POST',
-            'url': "setNewTitle",
-            'data': JSON.stringify(data),
-            'dataType': 'json'
-        })
+        data["id"] = this.state.scheduleData.id;
+        this.postJSON("setNewTitle", data);
     }
 
     componentDidMount() {
@@ -77,7 +105,10 @@ export default class Main extends React.Component {
                         <Title scheduleData={this.state.scheduleData}
                                handleSetNewTitle={this.handleSetNewTitle}
                         />
-                        <Table employeeArray={this.state.employeeArray} />
+                        <Table employeeArray={this.state.employeeArray}
+                               handleSaveShift={this.handleSaveShift}
+                               handleCreateShift={this.handleCreateShift}
+                        />
                     </div>
                     <div>
                         <Warnings />

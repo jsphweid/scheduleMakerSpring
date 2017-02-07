@@ -1,10 +1,16 @@
 import React from 'react';
+import Edit from './edit';
 
 export default class Shift extends React.Component {
 
     constructor() {
 
         super();
+
+        this.handleSave = this.handleSave.bind(this);
+        this.flipEdit = this.flipEdit.bind(this);
+        this.render = this.render.bind(this);
+        this.renderItemOrEditField = this.renderItemOrEditField.bind(this);
 
         this.state = {
             divStyle: {
@@ -44,17 +50,12 @@ export default class Shift extends React.Component {
         return str;
     }
 
-    handleSave(e) {
-        e.preventDefault();
-
+    handleSave(a, b, c, d, e, f) {
         this.setState({
             isEditing: false
         });
 
-        this.props.shift.startHour = parseInt($("#id_startHour").val());
-        this.props.shift.startMinutes = parseInt($("#id_startMinutes").val());
-        this.props.shift.endHour = parseInt($("#id_endHour").val());
-        this.props.shift.endMinutes = parseInt($("#id_endMinutes").val());
+        this.props.handleSaveShift(a, b, c, d, e, f);
     }
 
     getTimeAsString(shift) {
@@ -89,7 +90,6 @@ export default class Shift extends React.Component {
             )
         }
     }
-
 
     render() {
         return (

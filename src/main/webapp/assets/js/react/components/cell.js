@@ -10,26 +10,28 @@ export default class Cell extends React.Component {
             relevantShifts: this.props.relevantShifts,
             latestNegativeId: -1
         };
+
+        // this.handleCreateClick = this.handleCreateClick.bind(this);
     }
 
-    handleCreateClick(e) {
-        e.preventDefault();
-        let newObj = {};
-        newObj["dayId"] = this.props.day;
-        newObj["employee"] = this.props.emp.id;
-        newObj["startHour"] = 0;
-        newObj["startMinutes"] = 0;
-        newObj["endHour"] = 0;
-        newObj["endMinutes"] = 0;
-        newObj["id"] = this.state.latestNegativeId;
-        this.props.emp.shifts.push(newObj);
-        let sumObj = this.state.relevantShifts;
-        sumObj.push(newObj);
-        this.setState({
-            relevantShifts: sumObj,
-            latestNegativeId: this.state.latestNegativeId - 1
-        });
-    }
+    // handleCreateClick(e) {
+    //     e.preventDefault();
+    //     let newObj = {};
+    //     newObj["dayId"] = this.props.day;
+    //     newObj["employee"] = this.props.emp.id;
+    //     newObj["startHour"] = 0;
+    //     newObj["startMinutes"] = 0;
+    //     newObj["endHour"] = 0;
+    //     newObj["endMinutes"] = 0;
+    //     newObj["id"] = this.state.latestNegativeId;
+    //     this.props.emp.shifts.push(newObj);
+    //     let sumObj = this.state.relevantShifts;
+    //     sumObj.push(newObj);
+    //     this.setState({
+    //         relevantShifts: sumObj,
+    //         latestNegativeId: this.state.latestNegativeId - 1
+    //     });
+    // }
 
     handleDeleteShift(obj) {
         let i = this.props.emp.shifts.indexOf(obj);
@@ -48,9 +50,10 @@ export default class Cell extends React.Component {
                     <Shift key={shift.id.toString()}
                            shift={shift}
                            handleDeleteShift={this.handleDeleteShift}
+                           handleSaveShift={this.props.handleSaveShift}
                     />
                 )}
-                <a href="#" onClick={this.handleCreateClick}><span className="glyphicon glyphicon-plus"></span></a>
+                <a href="#" onClick={this.props.handleCreateShift}><span className="glyphicon glyphicon-plus"></span></a>
             </td>
         )
     }

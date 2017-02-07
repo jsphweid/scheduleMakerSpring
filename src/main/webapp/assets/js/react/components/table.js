@@ -27,7 +27,11 @@ export default class Table extends React.Component {
                     </thead>
                     <tbody>
                     {this.props.employeeArray.map(val =>
-                        <Row key={val.id.toString()} thisEmployee={val} />
+                        <Row key={val.id.toString()}
+                             thisEmployee={val}
+                             handleSaveShift={this.props.handleSaveShift}
+                             handleCreateShift={this.props.handleCreateShift}
+                        />
                     )}
                     </tbody>
                 </table>

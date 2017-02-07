@@ -5,7 +5,7 @@ import com.joseph.model.Shift;
 import java.util.List;
 
 public interface ShiftService {
-    Shift save(Shift s1);
+    Shift save(Shift shift);
 
     List<Shift> getAllShifts();
 

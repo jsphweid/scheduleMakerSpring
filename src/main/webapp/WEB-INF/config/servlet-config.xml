@@ -40,18 +40,18 @@
 			</bean>
 		</property>
 
-		<property name="defaultViews">
-			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-					<constructor-arg>
-						<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
-							<property name="autodetectAnnotations" value="true" />
-						</bean>
-					</constructor-arg>
-				</bean>
-			</list>
-		</property>
+		<!--<property name="defaultViews">-->
+			<!--<list>-->
+				<!--<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />-->
+				<!--<bean class="org.springframework.web.servlet.view.xml.MarshallingView">-->
+					<!--<constructor-arg>-->
+						<!--<bean class="org.springframework.oxm.xstream.XStreamMarshaller">-->
+							<!--<property name="autodetectAnnotations" value="true" />-->
+						<!--</bean>-->
+					<!--</constructor-arg>-->
+				<!--</bean>-->
+			<!--</list>-->
+		<!--</property>-->
 	</bean>
 
 	<mvc:interceptors>
