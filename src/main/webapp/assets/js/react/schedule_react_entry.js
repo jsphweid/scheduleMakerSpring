@@ -20,6 +20,14 @@ export default class Main extends React.Component {
         this.handleCreateShift = this.handleCreateShift.bind(this);
     }
 
+    getEmployeeRef(empId) {
+        for (let i = 0; i < this.state.employeeArray.length; i++) {
+            if (this.state.employeeArray[i].id === empId) {
+                return this.state.employeeArray[i];
+            }
+        }
+    }
+
     testButton() {
         console.log(this.state.employeeArray);
     }
@@ -59,24 +67,33 @@ export default class Main extends React.Component {
         this.postJSON("editExistingShift", data);
 
         // TODO: what's a better way to update the state here?
-        for (let i = 0; i < this.state.employeeArray.length; i++) {
-            if (this.state.employeeArray[i].id === empId) {
-                let emp = this.state.employeeArray[i];
-                for (let j = 0; j < emp.shifts.length; j++) {
-                    if (emp.shifts[j].id = id) {
-                        let shift = emp.shifts[j];
-                        shift.startHour = startHour;
-                        shift.startMinutes = startMinutes;
-                        shift.endHour = endHour;
-                        shift.endMinutes = endMinutes;
-                    }
-                }
+        let emp = this.getEmployeeRef(empId);
+        for (let j = 0; j < emp.shifts.length; j++) {
+            if (emp.shifts[j].id = id) {
+                let shift = emp.shifts[j];
+                shift.startHour = startHour;
+                shift.startMinutes = startMinutes;
+                shift.endHour = endHour;
+                shift.endMinutes = endMinutes;
             }
         }
     }
 
-    handleCreateShift() {
-        debugger;
+    handleCreateShift(dayId, empId) {
+        let data = {};
+        let self = this;
+        data["scheduleId"] = this.state.scheduleData.id;
+        data["dayId"] = dayId;
+        data["empId"] = empId;
+        data["belongsTo"] = this.state.scheduleData.belongsTo;
+        this.postJSON("addNewShift", data, function(newShift) {
+            let newShiftObj = JSON.parse(newShift);
+            let emp = self.getEmployeeRef(newShiftObj.employee);
+            emp.shifts.push(newShiftObj);
+            self.setState({
+                employeeArray: self.state.employeeArray
+            });
+        });
     }
 
 
@@ -119,7 +136,7 @@ export default class Main extends React.Component {
                     </div>
                     <div>
                         {/*<ChartClass scheduleData={this.state.scheduleData}*/}
-                               {/*employeeArray={this.state.employeeArray}*/}
+                        {/*employeeArray={this.state.employeeArray}*/}
                         {/*/>*/}
                     </div>
                 </div>

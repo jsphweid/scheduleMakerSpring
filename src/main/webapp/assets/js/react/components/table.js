@@ -28,6 +28,7 @@ export default class Table extends React.Component {
                     <tbody>
                     {this.props.employeeArray.map(val =>
                         <Row key={val.id.toString()}
+                             day={this.props.day}
                              thisEmployee={val}
                              handleSaveShift={this.props.handleSaveShift}
                              handleCreateShift={this.props.handleCreateShift}

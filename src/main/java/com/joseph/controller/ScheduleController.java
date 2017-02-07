@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
 import com.joseph.types.ExistingShift;
+import com.joseph.types.NewShift;
 import com.joseph.types.TitleId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,19 +55,24 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/getSchedule/{id}", method = RequestMethod.GET)
-    public @ResponseBody Schedule getSchedule(@PathVariable int id) {
-        if (!sessionService.getSessionUsername().equals(scheduleService.getScheduleById(id).getBelongsTo())) return null;
+    public
+    @ResponseBody
+    Schedule getSchedule(@PathVariable int id) {
+        if (!sessionService.getSessionUsername().equals(scheduleService.getScheduleById(id).getBelongsTo()))
+            return null;
         return scheduleService.getScheduleById(id);
 
     }
 
     @RequestMapping(value = "/getEmployees", method = RequestMethod.GET)
-    public @ResponseBody List<Employee> getEmployees() {
+    public
+    @ResponseBody
+    List<Employee> getEmployees() {
         return employeeService.findAllEmployees();
     }
 
     @RequestMapping(value = "/editSchedule/saveShifts", method = RequestMethod.POST)
-    public String saveShifts( ArrayList<Employee> empArray) {
+    public String saveShifts(ArrayList<Employee> empArray) {
         System.out.println("in here....");
         System.out.println(empArray);
         return "redirect:manageSchedules.html";
@@ -110,6 +116,32 @@ public class ScheduleController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/editSchedule/addNewShift", method = RequestMethod.POST)
+    public String addNewShift(@RequestBody String json) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        try {
+            NewShift newShift = mapper.readValue(json, NewShift.class);
+            Shift shift = new Shift();
+            shift.setBelongsTo(newShift.belongsTo);
+            shift.setDayId(newShift.dayId);
+            shift.setSchedule(scheduleService.getScheduleById(newShift.scheduleId));
+            shift.setEmployee(employeeService.getEmployee(newShift.empId));
+            shift.setStartHour(0);
+            shift.setStartMinutes(0);
+            shift.setEndHour(0);
+            shift.setEndMinutes(0);
+            shiftService.save(shift);
+            return mapper.writeValueAsString(shift);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "error";
     }
 
 }

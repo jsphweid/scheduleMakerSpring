@@ -77,7 +77,7 @@ export default class Shift extends React.Component {
             return (
                 <div style={this.state.divStyle}>
                     <span onClick={this.flipEdit}>{this.getTimeAsString(this.props.shift)}</span>
-                    <a href="#" onClick={() => this.props.handleDeleteShift(this.props.shift)}>
+                    <a href="#/" onClick={() => this.props.handleDeleteShift(this.props.shift)}>
                         <span style={this.state.deleteStyle} className="glyphicon glyphicon-remove"></span>
                     </a>
                 </div>
