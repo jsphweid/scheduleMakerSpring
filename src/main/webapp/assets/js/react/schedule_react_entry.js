@@ -12,13 +12,15 @@ export default class Main extends React.Component {
 
         this.state = {
             employeeArray: undefined,
-            scheduleData: undefined
+            scheduleData: undefined,
+            weekPredictionsArray: undefined
         };
 
         this.handleSetNewTitle = this.handleSetNewTitle.bind(this);
         this.handleSaveShift = this.handleSaveShift.bind(this);
         this.handleCreateShift = this.handleCreateShift.bind(this);
         this.handleDeleteShift = this.handleDeleteShift.bind(this);
+        this.handleWeekPredictionChange = this.handleWeekPredictionChange.bind(this);
     }
 
     getEmployeeRef(empId) {
@@ -97,6 +99,20 @@ export default class Main extends React.Component {
         });
     }
 
+    handleWeekPredictionChange(newId) {
+        let data = {};
+        let self = this;
+        data["scheduleId"] = this.state.scheduleData.id;
+        data["weekPredictionId"] = newId;
+        this.postJSON("changeWeekPrediction", data, function(newWeekPredictionJsonString) {
+            let obj = JSON.parse(newWeekPredictionJsonString);
+            self.state.scheduleData.weekPrediction = obj;
+            self.setState({
+                scheduleData: self.state.scheduleData
+            });
+        });
+    }
+
     handleDeleteShift(obj) {
         let data = {};
         let self = this;
@@ -127,6 +143,9 @@ export default class Main extends React.Component {
         $.get("http://localhost:8080/scheduleMaker/getEmployees.json", function(employeeArray) {
             component.setState({ "employeeArray" : employeeArray });
         });
+        $.get("http://localhost:8080/scheduleMaker/getWeekPredictions.json", function(weekPredictions) {
+            component.setState({ "weekPredictionsArray" : weekPredictions})
+        })
     }
 
     render() {
@@ -136,6 +155,8 @@ export default class Main extends React.Component {
                     <div>
                         <Title scheduleData={this.state.scheduleData}
                                handleSetNewTitle={this.handleSetNewTitle}
+                               weekPredictionsArray={this.state.weekPredictionsArray}
+                               handleWeekPredictionChange={this.handleWeekPredictionChange}
                         />
                         <Table employeeArray={this.state.employeeArray}
                                handleSaveShift={this.handleSaveShift}

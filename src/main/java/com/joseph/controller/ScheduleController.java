@@ -7,10 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
-import com.joseph.types.ExistingShift;
-import com.joseph.types.IntInt;
-import com.joseph.types.NewShift;
-import com.joseph.types.TitleId;
+import com.joseph.types.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +36,9 @@ public class ScheduleController {
     @Resource(name = "shiftService")
     private ShiftService shiftService;
 
+    @Resource(name = "weekPredictionService")
+    private WeekPredictionService weekPredictionService;
+
     private static Gson gson = new Gson();
 
     @RequestMapping(value = "/manageSchedules", method = RequestMethod.GET)
@@ -56,20 +56,24 @@ public class ScheduleController {
         return "editSchedule";
     }
 
-    @RequestMapping(value = "/getSchedule/{id}", method = RequestMethod.GET)
-    public
     @ResponseBody
-    Schedule getSchedule(@PathVariable int id) {
+    @RequestMapping(value = "/getSchedule/{id}", method = RequestMethod.GET)
+    public Schedule getSchedule(@PathVariable int id) {
         if (!sessionService.getSessionUsername().equals(scheduleService.getScheduleById(id).getBelongsTo()))
             return null;
         return scheduleService.getScheduleById(id);
 
     }
 
-    @RequestMapping(value = "/getEmployees", method = RequestMethod.GET)
-    public
     @ResponseBody
-    List<Employee> getEmployees() {
+    @RequestMapping(value = "/getWeekPredictions", method = RequestMethod.GET)
+    public List<WeekPrediction> getWeekPredictions() {
+        return weekPredictionService.findAllWeekPredictions();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getEmployees", method = RequestMethod.GET)
+    public List<Employee> getEmployees() {
         return employeeService.findAllEmployees();
     }
 
@@ -152,18 +156,35 @@ public class ScheduleController {
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         try {
-            IntInt intInt = mapper.readValue(json, IntInt.class);
-            Employee employee = employeeService.getEmployee(intInt.empId);
+            ShiftIdEmpId shiftIdEmpId = mapper.readValue(json, ShiftIdEmpId.class);
+            Employee employee = employeeService.getEmployee(shiftIdEmpId.empId);
             List<Shift> shifts = employee.getShifts();
                 for (Iterator<Shift> iter = shifts.listIterator(); iter.hasNext(); ) {
                 Shift shift = iter.next();
-                if (shift.getId() == intInt.shiftId) {
+                if (shift.getId() == shiftIdEmpId.shiftId) {
                     iter.remove();
                     shiftService.delete(shift.getId());
                 }
             }
             employeeService.save(employee);
             return mapper.writeValueAsString(shifts);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/editSchedule/changeWeekPrediction", method = RequestMethod.POST)
+    public String changeWeekPrediction(@RequestBody String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        try {
+            ScheduleIdWeekPredictionId scheduleIdWeekPredictionId = mapper.readValue(json, ScheduleIdWeekPredictionId.class);
+            Schedule schedule = scheduleService.getScheduleById(scheduleIdWeekPredictionId.scheduleId);
+            schedule.setWeekPrediction(weekPredictionService.getById(scheduleIdWeekPredictionId.weekPredictionId));
+            scheduleService.save(schedule);
+            return mapper.writeValueAsString(schedule.getWeekPrediction());
         } catch (IOException e) {
             e.printStackTrace();
         }

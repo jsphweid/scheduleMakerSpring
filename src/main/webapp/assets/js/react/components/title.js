@@ -2,9 +2,15 @@ import React from 'react';
 
 export default class Title extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.handleOnBlur = this.handleOnBlur.bind(this);
+        this.handleWeekPredictionChange = this.handleWeekPredictionChange.bind(this);
+
+        this.state = {
+            weekPredictionId: this.props.scheduleData.weekPrediction.id
+        };
     }
 
     handleOnBlur() {
@@ -13,7 +19,21 @@ export default class Title extends React.Component {
         this.props.handleSetNewTitle(titleVal);
     }
 
+    handleWeekPredictionChange(e) {
+        this.setState({ weekPredictionId: e.target.value });
+        this.props.handleWeekPredictionChange(e.target.value);
+    }
+
     render() {
+
+        let options = [];
+
+        if (this.props.weekPredictionsArray) {
+            this.props.weekPredictionsArray.forEach(weekPrediction => {
+                options.push(<option key={weekPrediction.id.toString()} value={weekPrediction.id}>{weekPrediction.title}</option>)
+            });
+        }
+
         return (
             <div>
                 <input id="title"
@@ -21,7 +41,13 @@ export default class Title extends React.Component {
                        defaultValue={this.props.scheduleData.title}
                        onBlur={this.handleOnBlur}/>
                 uses
-                <span> {this.props.scheduleData.weekPrediction.title}</span>
+
+                <select defaultValue={this.state.weekPredictionId}
+                        value={this.state.value}
+                        onChange={this.handleWeekPredictionChange}>
+                    {options}
+                </select>
+
             </div>
         )
     }

@@ -1,6 +1,6 @@
 package com.joseph.types;
 
-public class IntInt {
+public class ShiftIdEmpId {
     public int shiftId;
     public int empId;
 }

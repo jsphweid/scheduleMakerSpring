@@ -148,7 +148,7 @@ public class AddInitialData {
         weekPredictionService.save(wp1);
 
         WeekPrediction wp2 = new WeekPrediction();
-        wp2.setTitle("week prediction 1");
+        wp2.setTitle("week prediction 2");
         wp2.setBelongsTo("joseph");
         wp2.setDay0(dayPredictionService.getDayPrediction(1));
         wp2.setDay1(dayPredictionService.getDayPrediction(1));
