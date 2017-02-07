@@ -47,10 +47,15 @@
 	
 	<servlet-mapping>
 		<servlet-name>scheduleMakerServlet</servlet-name>
-		<!--<url-pattern>*.html</url-pattern>-->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
+
+	<servlet-mapping>
+		<servlet-name>scheduleMakerServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>scheduleMakerServlet</servlet-name>
 		<url-pattern>/pdfs/**</url-pattern>

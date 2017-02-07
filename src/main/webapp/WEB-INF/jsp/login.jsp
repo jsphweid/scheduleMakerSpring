@@ -9,7 +9,7 @@
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/assets/css/myGlobalStyles.css"/>" rel="stylesheet">
 
-</head>
+</head
 <body onload='document.f.j_username.focus()'>
 <jsp:include page="template/header.jsp"/>
 <div class="container">

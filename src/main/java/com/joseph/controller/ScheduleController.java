@@ -1,18 +1,18 @@
 package com.joseph.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
+import com.joseph.types.TitleId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Controller
@@ -32,6 +32,8 @@ public class ScheduleController {
 
     @Resource(name = "shiftService")
     private ShiftService shiftService;
+
+    private static Gson gson = new Gson();
 
     @RequestMapping(value = "/manageSchedules", method = RequestMethod.GET)
     public String manageSchedules(Model model) {
@@ -60,4 +62,27 @@ public class ScheduleController {
         return employeeService.findAllEmployees();
     }
 
+    @RequestMapping(value = "/editSchedule/saveShifts", method = RequestMethod.POST)
+    public String saveShifts( ArrayList<Employee> empArray) {
+        System.out.println("in here....");
+        System.out.println(empArray);
+        return "redirect:manageSchedules.html";
+    }
+
+    @RequestMapping(value = "/editSchedule/saveShiftsObj", method = RequestMethod.POST)
+    public void saveShiftsObj(@RequestParam("empArray") Object employeeArray) {
+//        return "redirect:manageSchedules.html";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/editSchedule/setNewTitle", method = RequestMethod.POST)
+    public void setNewTitle(@RequestParam("data") String json) {
+
+        System.out.println(json);
+
+//        ObjectMapper mapper = new ObjectMapper();
+//        TitleId obj = mapper.readValue(json, TitleId.class);
+
+
+    }
 }

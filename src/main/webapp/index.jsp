@@ -6,8 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>
-    </title>
+    <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
