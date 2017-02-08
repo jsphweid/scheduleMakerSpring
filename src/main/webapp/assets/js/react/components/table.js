@@ -5,7 +5,7 @@ export default class Table extends React.Component {
 
     render() {
         const content = this.props.employeeArray.map((val) =>
-            <tr key={val.id.toString()}>
+            <tr key={val.belongsTo + val.id.toString()}>
                 <td>{val.firstName + " " + val.lastName}</td>
             </tr>
         );
@@ -27,7 +27,7 @@ export default class Table extends React.Component {
                     </thead>
                     <tbody>
                     {this.props.employeeArray.map(val =>
-                        <Row key={val.id.toString()}
+                        <Row key={val.id.toString() + val.firstName + val.lastName}
                              day={this.props.day}
                              thisEmployee={val}
                              handleSaveShift={this.props.handleSaveShift}

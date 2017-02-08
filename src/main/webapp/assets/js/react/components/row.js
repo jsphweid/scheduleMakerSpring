@@ -14,7 +14,7 @@ export default class Row extends React.Component {
                     relevantShifts.push(shifts[i])
                 }
             }
-            tds.push(<Cell key={day.toString()}
+            tds.push(<Cell key={day.toString() + this.props.thisEmployee.firstName}
                            day={day}
                            relevantShifts={relevantShifts}
                            emp={self.props.thisEmployee}

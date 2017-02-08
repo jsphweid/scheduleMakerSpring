@@ -48,7 +48,6 @@ function updateTagAssocations(rgraph, name) {
                 var hour = "hour";
                 hour += ("0" + i).slice(-2);
                 $("#" + hour).val(Math.floor(rgraph.data[i]));
-                debugger;
             }
         });
     });
