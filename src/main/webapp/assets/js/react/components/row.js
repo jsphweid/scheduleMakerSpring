@@ -26,7 +26,7 @@ export default class Row extends React.Component {
 
         return (
             <tr>
-                <td>{this.props.thisEmployee.firstName}</td>
+                <td>{this.props.thisEmployee.firstName + " " + this.props.thisEmployee.lastName}</td>
                 {tds}
             </tr>
         )

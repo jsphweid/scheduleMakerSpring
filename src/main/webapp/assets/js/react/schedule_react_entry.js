@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Warnings from './components/warnings';
 import Title from './components/title';
 import Table from './components/table';
-import MyChart from './components/myChart'
+import MyChart from './components/myChart';
 
 export default class Main extends React.Component {
 
@@ -93,8 +93,7 @@ export default class Main extends React.Component {
         data["scheduleId"] = this.state.scheduleData.id;
         data["weekPredictionId"] = newId;
         this.postJSON("changeWeekPrediction", data, function(newWeekPredictionJsonString) {
-            let obj = JSON.parse(newWeekPredictionJsonString);
-            self.state.scheduleData.weekPrediction = obj;
+            self.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
             self.setState({
                 scheduleData: self.state.scheduleData
             });
@@ -152,13 +151,15 @@ export default class Main extends React.Component {
                                handleDeleteShift={this.handleDeleteShift}
                         />
                     </div>
-                    <div>
-                        <Warnings />
-                    </div>
-                    <div>
-                        <MyChart scheduleData={this.state.scheduleData}
-                            employeeArray={this.state.employeeArray}
-                        />
+                    <div className="container-fluid">
+                        <div className="col-md-3">
+                            <Warnings />
+                        </div>
+                        <div className="col-md-9">
+                            <MyChart scheduleData={this.state.scheduleData}
+                                     employeeArray={this.state.employeeArray}
+                            />
+                        </div>
                     </div>
                 </div>
 
