@@ -32,19 +32,6 @@ export default class Main extends React.Component {
         }
     }
 
-    testButton() {
-        console.log(this.state.employeeArray);
-    }
-
-    handlePageSave() {
-        $.post("saveShifts",
-            {
-                empArray: this.state.employeeArray
-            }, function(data, status) {
-                console.log("status is: " + status);
-            });
-    }
-
     postJSON(url, data, callback) {
         return $.ajax({
             headers: {
@@ -167,10 +154,6 @@ export default class Main extends React.Component {
                     </div>
                     <div>
                         <Warnings />
-                    </div>
-                    <div>
-                        <button className="btn btn-danger" onClick={this.testButton}>for testing purposes</button>
-                        <button className="btn btn-success" onClick={this.handlePageSave}>Save All</button>
                     </div>
                     <div>
                         <MyChart scheduleData={this.state.scheduleData}
