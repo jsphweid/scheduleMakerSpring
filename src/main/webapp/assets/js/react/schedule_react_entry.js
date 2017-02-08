@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Warnings from './components/warnings';
 import Title from './components/title';
 import Table from './components/table';
+import MyChart from './components/myChart'
 
 export default class Main extends React.Component {
 
@@ -172,9 +173,9 @@ export default class Main extends React.Component {
                         <button className="btn btn-success" onClick={this.handlePageSave}>Save All</button>
                     </div>
                     <div>
-                        {/*<ChartClass scheduleData={this.state.scheduleData}*/}
-                        {/*employeeArray={this.state.employeeArray}*/}
-                        {/*/>*/}
+                        <MyChart scheduleData={this.state.scheduleData}
+                            employeeArray={this.state.employeeArray}
+                        />
                     </div>
                 </div>
 

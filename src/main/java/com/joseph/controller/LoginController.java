@@ -18,16 +18,16 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
-        if (!addInitialData.isAdded) {
-            addInitialData.addEmployees();
-            addInitialData.addPositions();
-            addInitialData.addDayPredictions();
-            addInitialData.addWeekPredictions();
-            addInitialData.addEmployeesPositions();
-            addInitialData.addSchedules();
-            addInitialData.addShifts();
-            addInitialData.isAdded = true;
-        }
+//        if (!addInitialData.isAdded) {
+//            addInitialData.addEmployees();
+//            addInitialData.addPositions();
+//            addInitialData.addDayPredictions();
+//            addInitialData.addWeekPredictions();
+//            addInitialData.addEmployeesPositions();
+//            addInitialData.addSchedules();
+//            addInitialData.addShifts();
+//            addInitialData.isAdded = true;
+//        }
         return "login";
     }
 
