@@ -66,6 +66,7 @@ export default class Main extends React.Component {
                 shift.startMinutes = startMinutes;
                 shift.endHour = endHour;
                 shift.endMinutes = endMinutes;
+                this.setState({ employeeArray: this.state.employeeArray });
             }
         }
     }

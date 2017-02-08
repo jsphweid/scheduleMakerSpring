@@ -1,5 +1,6 @@
 import React from 'react';
 import Cell from './cell';
+import CalcTime from './helper';
 
 export default class Row extends React.Component {
 
@@ -26,7 +27,11 @@ export default class Row extends React.Component {
 
         return (
             <tr>
-                <td>{this.props.thisEmployee.firstName + " " + this.props.thisEmployee.lastName}</td>
+                <td>
+                    {this.props.thisEmployee.firstName + " " + this.props.thisEmployee.lastName}
+                    <br/>
+                    (~{CalcTime.getTotalHoursWorked(this.props.thisEmployee.shifts)})
+                </td>
                 {tds}
             </tr>
         )
