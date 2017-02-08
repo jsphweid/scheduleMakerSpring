@@ -9,7 +9,21 @@ export default class Cell extends React.Component {
         this.handleCreateShift = this.handleCreateShift.bind(this);
 
         this.state = {
-            relevantShifts: this.props.relevantShifts
+            relevantShifts: this.props.relevantShifts,
+            emptyDivAddClick: {
+                "minWidth" : "20px",
+                "minHeight" : "20px",
+                "backgroundColor" : "#CCDFCB",
+                "cursor" : "pointer",
+                "margin" : "5px"
+            },
+            nonEmptyDivAddClick: {
+                "minWidth" : "20px",
+                "minHeight" : "10px",
+                "backgroundColor" : "#CCDFCB",
+                "cursor" : "pointer",
+                "margin" : "5px"
+            }
         };
 
         // this.handleCreateClick = this.handleCreateClick.bind(this);
@@ -20,17 +34,26 @@ export default class Cell extends React.Component {
     }
 
     render() {
-        return (
-            <td>
-                {this.props.relevantShifts.map(shift =>
-                    <Shift key={shift.id.toString() + "shift" + shift.dayId.toString()}
-                           shift={shift}
-                           handleDeleteShift={this.props.handleDeleteShift}
-                           handleSaveShift={this.props.handleSaveShift}
-                    />
-                )}
-                <a href="#/" onClick={this.handleCreateShift}><span className="glyphicon glyphicon-plus"></span></a>
-            </td>
-        )
+
+        if (this.props.relevantShifts.length > 0) {
+            return (
+                <td>
+                    {this.props.relevantShifts.map(shift =>
+                        <Shift key={shift.id.toString() + "shift" + shift.dayId.toString()}
+                               shift={shift}
+                               handleDeleteShift={this.props.handleDeleteShift}
+                               handleSaveShift={this.props.handleSaveShift}
+                        />
+                    )}
+                    <div style={this.state.nonEmptyDivAddClick} onClick={this.handleCreateShift}></div>
+                </td>
+            )
+        } else {
+            return (
+                <td>
+                    <div style={this.state.emptyDivAddClick} onClick={this.handleCreateShift}></div>
+                </td>
+            )
+        }
     }
 }

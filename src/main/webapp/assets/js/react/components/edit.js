@@ -59,7 +59,7 @@ export default class Edit extends React.Component {
                     <input onChange={this.handleStartMinutesChange} style={this.state.editStyles} defaultValue={this.state.startMinutes} type="number" min="0" max="59"/> to
                     <input onChange={this.handleEndHourChange} style={this.state.editStyles} defaultValue={this.state.endHour} type="number" min="0" max="23"/>:
                     <input onChange={this.handleEndMinutesChange} style={this.state.editStyles} defaultValue={this.state.endMinutes} type="number" min="0" max="59"/>
-                    <input type="submit" className="btn btn-primary" value="Submit" />
+                    <input type="submit" className="btn btn-default" value="Save" />
                 </form>
             </div>
         )

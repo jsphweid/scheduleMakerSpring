@@ -30,7 +30,6 @@ export default class Title extends React.Component {
 
         if (this.props.weekPredictionsArray) {
             this.props.weekPredictionsArray.forEach(weekPrediction => {
-                debugger;
                 options.push(
                     <option key={weekPrediction.id.toString() + weekPrediction.title}
                                      value={weekPrediction.id}

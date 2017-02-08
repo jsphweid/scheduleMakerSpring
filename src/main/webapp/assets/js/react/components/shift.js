@@ -18,10 +18,11 @@ export default class Shift extends React.Component {
                 "overflow": "hidden",
                 "border": "1px solid black",
                 "padding": "2px",
-                "margin": "2px"
+                "margin": "5px"
             },
             deleteStyle: {
-                "float": "right"
+                "float": "right",
+                "color" : "#414141"
             },
             isEditing: false
         };
