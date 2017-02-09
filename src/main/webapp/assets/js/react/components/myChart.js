@@ -6,8 +6,64 @@ import {Bar} from 'react-chartjs-2';
 // #FF6A5C -- lighter = #F7A59E
 // #056571
 
+export default class MyChart extends React.Component {
 
-const data = {
+    constructor() {
+        super();
+
+        this.handleClick = this.handleClick.bind(this);
+
+        this.state = {
+            currentDay: 0,
+            buttonGroup: {
+                "textAlign": "center",
+                "margin": "0 auto"
+            },
+        };
+    }
+
+    handleClick(e) {
+        $("#radio" + this.state.currentDay).removeClass("active");
+        this.setState({
+            currentDay: parseInt(e.target.value)
+        });
+        $("#radio" + e.target.value).addClass("active");
+    }
+
+    render() {
+        let costScoreObj = this.props.timeCostObj[this.state.currentDay];
+        let weekPredictedArray = this.props.simpleWeekObject[this.state.currentDay];
+        initialData.datasets[0].data = costScoreObj.cost;
+        initialData.datasets[1].data = costScoreObj.score;
+        initialData.datasets[2].data = weekPredictedArray;
+
+        console.log("my chart rerender");
+        return (
+            <div className="container-fluid">
+                <div className="row" style={this.state.buttonGroup}>
+                    <div className="btn-group" data-toggle="buttons" onClick={this.handleClick}>
+                        <button id="radio0" className="btn btn-default active" value={0}>Day 1</button>
+                        <button id="radio1" className="btn btn-default" value={1}>Day 2</button>
+                        <button id="radio2" className="btn btn-default" value={2}>Day 3</button>
+                        <button id="radio3" className="btn btn-default" value={3}>Day 4</button>
+                        <button id="radio4" className="btn btn-default" value={4}>Day 5</button>
+                        <button id="radio5" className="btn btn-default" value={5}>Day 6</button>
+                        <button id="radio6" className="btn btn-default" value={6}>Day 7</button>
+                    </div>
+                </div>
+                <div className="row">
+                    <Bar
+                        data = {initialData}
+                        options = {options}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+
+
+const initialData = {
     labels: ['4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 AM', '1 AM', '2 AM', '3 AM'],
     datasets: [
         {
@@ -88,42 +144,37 @@ const options = {
             {
                 type: 'linear',
                 display: true,
-                position: 'left',
+                position: 'left', // 400
                 id: 'y-axis-1',
                 gridLines: {
                     display: false
                 },
                 labels: {
                     show: true
+                },
+                ticks: {
+                    beginAtZero:true,
+                    min: 0,
+                    max: 400
                 }
             },
             {
                 type: 'linear',
                 display: true,
-                position: 'right',
+                position: 'right', //200
                 id: 'y-axis-2',
                 gridLines: {
                     display: false
                 },
                 labels: {
                     show: true
+                },
+                ticks: {
+                    beginAtZero:true,
+                    min: 0,
+                    max: 200
                 }
             }
         ]
     }
 };
-
-export default class MyChart extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <h2>Day what?</h2>
-                <Bar
-                    data={data}
-                    options={options}
-                />
-            </div>
-        );
-    }
-}

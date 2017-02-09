@@ -16,7 +16,9 @@ export default class Main extends React.Component {
         this.state = {
             employeeArray: undefined,
             scheduleData: undefined,
-            weekPredictionsArray: undefined
+            weekPredictionsArray: undefined,
+            timeCostObj: undefined,
+            simpleWeekObject: undefined
         };
 
         this.handleSetNewTitle = this.handleSetNewTitle.bind(this);
@@ -68,9 +70,26 @@ export default class Main extends React.Component {
                 shift.startMinutes = startMinutes;
                 shift.endHour = endHour;
                 shift.endMinutes = endMinutes;
-                this.setState({ employeeArray: this.state.employeeArray });
+                this.setState({
+                    employeeArray: this.state.employeeArray,
+                    timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray),
+                    simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
+                });
             }
         }
+    }
+
+    getSimpleWeekObject(schData) {
+        let ret = {};
+        for (let i = 0; i < 7; i++) {
+            ret[i] = [];
+            for (let j = 0; j < 24; j++) {
+                let num = j;
+                if (j < 10) num = "0" + num;
+                ret[i].push(schData.weekPrediction["day" + i]["hour" + num]);
+            }
+        }
+        return ret;
     }
 
     handleCreateShift(dayId, empId) {
@@ -83,7 +102,11 @@ export default class Main extends React.Component {
             let newShiftObj = JSON.parse(newShift);
             let emp = this.getEmployeeRef(newShiftObj.employee);
             emp.shifts.push(newShiftObj);
-            this.setState({ employeeArray: this.state.employeeArray });
+            this.setState({
+                employeeArray: this.state.employeeArray,
+                timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray),
+                simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
+            });
         });
     }
 
@@ -93,7 +116,11 @@ export default class Main extends React.Component {
         data["weekPredictionId"] = newId;
         this.postJSON("changeWeekPrediction", data, (newWeekPredictionJsonString) => {
             this.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
-            this.setState({ scheduleData: this.state.scheduleData });
+            this.setState({
+                scheduleData: this.state.scheduleData,
+                timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray),
+                simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
+            });
         });
     }
 
@@ -105,7 +132,11 @@ export default class Main extends React.Component {
             let newShifts = JSON.parse(returnData);
             let emp = this.getEmployeeRef(obj.employee);
             emp.shifts = newShifts;
-            this.setState({ employeeArray: this.state.employeeArray });
+            this.setState({
+                employeeArray: this.state.employeeArray,
+                timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray),
+                simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
+            });
         });
     }
 
@@ -114,25 +145,30 @@ export default class Main extends React.Component {
         data["title"] = title;
         data["id"] = this.state.scheduleData.id;
         this.postJSON("setNewTitle", data);
-        // for test purposes
-        CalcTime.getTimeCostObj(this.state.employeeArray);
     }
 
     componentDidMount() {
         let component = this;
-        $.get("http://localhost:8080/scheduleMaker/getSchedule/" + window.schedule_id + ".json", function(scheduleData) {
-            component.setState({ "scheduleData" : scheduleData });
+        $.get("http://localhost:8080/scheduleMaker/getSchedule/" + window.schedule_id + ".json", (scheduleData) => {
+            component.setState({
+                "scheduleData" : scheduleData,
+                simpleWeekObject : this.getSimpleWeekObject(scheduleData)
+            });
         });
-        $.get("http://localhost:8080/scheduleMaker/getEmployees.json", function(employeeArray) {
-            component.setState({ "employeeArray" : employeeArray });
+        $.get("http://localhost:8080/scheduleMaker/getEmployees.json", (employeeArray) => {
+            component.setState({
+                "employeeArray" : employeeArray,
+                "timeCostObj" : CalcTime.getTimeCostObj(employeeArray)
+            });
         });
-        $.get("http://localhost:8080/scheduleMaker/getWeekPredictions.json", function(weekPredictions) {
+        $.get("http://localhost:8080/scheduleMaker/getWeekPredictions.json", (weekPredictions) => {
             component.setState({ "weekPredictionsArray" : weekPredictions})
         })
     }
 
     render() {
         if (this.state.employeeArray && this.state.scheduleData) {
+            console.log("rerender!!!!!!!!");
             return (
                 <div>
                     <div>
@@ -155,6 +191,8 @@ export default class Main extends React.Component {
                         <div className="col-md-9">
                             <MyChart scheduleData={this.state.scheduleData}
                                      employeeArray={this.state.employeeArray}
+                                     timeCostObj={this.state.timeCostObj}
+                                     simpleWeekObject={this.state.simpleWeekObject}
                             />
                         </div>
                     </div>
