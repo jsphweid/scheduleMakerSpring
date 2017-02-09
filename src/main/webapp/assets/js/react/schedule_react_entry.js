@@ -6,6 +6,8 @@ import Title from './components/title';
 import Table from './components/table';
 import MyChart from './components/myChart';
 
+import CalcTime from './components/helper';
+
 export default class Main extends React.Component {
 
     constructor() {
@@ -73,46 +75,37 @@ export default class Main extends React.Component {
 
     handleCreateShift(dayId, empId) {
         let data = {};
-        let self = this;
         data["scheduleId"] = this.state.scheduleData.id;
         data["dayId"] = dayId;
         data["empId"] = empId;
         data["belongsTo"] = this.state.scheduleData.belongsTo;
-        this.postJSON("addNewShift", data, function(newShift) {
+        this.postJSON("addNewShift", data, (newShift) => {
             let newShiftObj = JSON.parse(newShift);
-            let emp = self.getEmployeeRef(newShiftObj.employee);
+            let emp = this.getEmployeeRef(newShiftObj.employee);
             emp.shifts.push(newShiftObj);
-            self.setState({
-                employeeArray: self.state.employeeArray
-            });
+            this.setState({ employeeArray: this.state.employeeArray });
         });
     }
 
     handleWeekPredictionChange(newId) {
         let data = {};
-        let self = this;
         data["scheduleId"] = this.state.scheduleData.id;
         data["weekPredictionId"] = newId;
-        this.postJSON("changeWeekPrediction", data, function(newWeekPredictionJsonString) {
-            self.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
-            self.setState({
-                scheduleData: self.state.scheduleData
-            });
+        this.postJSON("changeWeekPrediction", data, (newWeekPredictionJsonString) => {
+            this.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
+            this.setState({ scheduleData: this.state.scheduleData });
         });
     }
 
     handleDeleteShift(obj) {
         let data = {};
-        let self = this;
         data["shiftId"] = obj.id;
         data["empId"] = obj.employee;
-        this.postJSON("deleteShift", data, function(returnData) {
+        this.postJSON("deleteShift", data, (returnData) => {
             let newShifts = JSON.parse(returnData);
-            let emp = self.getEmployeeRef(obj.employee);
+            let emp = this.getEmployeeRef(obj.employee);
             emp.shifts = newShifts;
-            self.setState({
-                employeeArray: self.state.employeeArray
-            });
+            this.setState({ employeeArray: this.state.employeeArray });
         });
     }
 
@@ -121,6 +114,8 @@ export default class Main extends React.Component {
         data["title"] = title;
         data["id"] = this.state.scheduleData.id;
         this.postJSON("setNewTitle", data);
+        // for test purposes
+        CalcTime.getTimeCostObj(this.state.employeeArray);
     }
 
     componentDidMount() {
