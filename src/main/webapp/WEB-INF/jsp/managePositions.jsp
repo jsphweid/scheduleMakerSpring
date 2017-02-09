@@ -11,15 +11,11 @@
 <jsp:include page="template/header.jsp"/>
 <div class="container">
 
+<h2>Positions</h2>
 
+    <a style="margin-bottom: 20px;" class="btn btn-default" href="addPosition.html">Add Position</a>
 
-<p>
-    Here are all the positions
-</p>
-
-<h2>Position Table</h2>
-
-<table border="2" cellpadding="2">
+<table class="table table-striped">
     <tr>
         <th>Position</th>
         <th></th>
@@ -31,12 +27,6 @@
         </tr>
     </c:forEach>
 </table>
-
-<a href="addPosition.html">
-    <button class="btn btn-default">
-        Add Position >>
-    </button>
-</a>
 
 
 

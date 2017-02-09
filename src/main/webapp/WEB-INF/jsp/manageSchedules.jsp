@@ -15,16 +15,11 @@
     <form:errors path="*" cssClass="errorblock" element="div" />
 
 
-    <%--example error--%>
-    <%--<form:errors path="firstName" cssClass="error" />--%>
 
-    <p>
-        Here are all the schedules
-    </p>
 
-    <h2>Schedule Table</h2>
+    <h2>Schedules</h2>
 
-    <table border="2" cellpadding="2">
+    <table class="table table-striped">
         <tr>
             <th>Schedule</th>
             <th>Uses Week</th>

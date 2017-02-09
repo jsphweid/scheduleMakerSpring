@@ -12,44 +12,36 @@
 <div class="container">
 
 
+    <h2>Employees</h2>
 
-<p>
-    Here is where you'll manage employees. You'll be able to see all of them and add
-    new ones...
-</p>
+    <a class="btn btn-default" style="margin-bottom: 20px" href="addEmployee.html">
+        Add Employee
+    </a>
 
-<h2>Employee Table</h2>
-
-<table border="2" cellpadding="2">
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Hourly Wage</th>
-        <th>Score</th>
-        <th>Min. Hours</th>
-        <th>Max. Hours</th>
-        <th></th>
-    </tr>
-    <c:forEach items="${employees}" var="emp">
+    <table class="table table-striped">
         <tr>
-            <td>${emp.firstName}</td>
-            <td>${emp.lastName}</td>
-            <td>${emp.hourlyWage}</td>
-            <td>${emp.score}</td>
-            <td>${emp.minHours}</td>
-            <td>${emp.maxHours}</td>
-            <td><a href="editEmployee/${emp.id}"><button class="btn btn-default">Edit</button></a></td>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hourly Wage</th>
+            <th>Score</th>
+            <th>Min. Hours</th>
+            <th>Max. Hours</th>
+            <th></th>
         </tr>
-    </c:forEach>
-</table>
-
-<a href="addEmployee.html">
-    <button class="btn btn-default">
-        Add Employee >>
-    </button>
-</a>
-
-
+        <c:forEach items="${employees}" var="emp">
+            <tr>
+                <td>${emp.firstName}</td>
+                <td>${emp.lastName}</td>
+                <td>${emp.hourlyWage}</td>
+                <td>${emp.score}</td>
+                <td>${emp.minHours}</td>
+                <td>${emp.maxHours}</td>
+                <td><a href="editEmployee/${emp.id}">
+                    <button class="btn btn-default">Edit</button>
+                </a></td>
+            </tr>
+        </c:forEach>
+    </table>
 
 </div>
 <jsp:include page="template/footer.jsp"/>

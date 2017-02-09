@@ -14,37 +14,39 @@
 <div class="container">
     <form:errors path="*" cssClass="errorblock" element="div" />
 
+    <a class="btn btn-default" href="editEmployeesPositions">Edit</a>
 
-    <%--example error--%>
-    <%--<form:errors path="firstName" cssClass="error" />--%>
+    <br><br>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Employee Name</th>
+                        <c:forEach items="${positions}" var="position">
+                            <th>${position.title}</th>
+                        </c:forEach>
+                    </tr>
+                    <c:forEach items="${employees}" var="employee">
+                        <tr>
+                            <td>${employee.firstName} ${employee.lastName}</td>
+                            <c:forEach items="${positions}" var="position">
+                                <td>
+                                    <c:if test="${employee.positions.contains(position)}">
+                                        &#x2714;
+                                    </c:if>
+                                </td>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+            <div class="col-md-6">
 
-    <table border="2" cellpadding="2">
-        <tr>
-            <th>Employee Name</th>
-            <c:forEach items="${positions}" var="position">
-                <th>${position.title}</th>
-            </c:forEach>
-        </tr>
-        <c:forEach items="${employees}" var="employee">
-            <tr>
-                <td>${employee.firstName} ${employee.lastName}</td>
-                <c:forEach items="${positions}" var="position">
-                    <td>
-                        <c:if test="${employee.positions.contains(position)}">
-                            &#x2714;
-                        </c:if>
-                    </td>
-                </c:forEach>
-            </tr>
-        </c:forEach>
-    </table>
-
-    <a href="editEmployeesPositions">
-        <button class="btn btn-default">
-            Edit >>
-        </button>
-    </a>
+            </div>
+        </div>
+    </div>
 
 </div>
 

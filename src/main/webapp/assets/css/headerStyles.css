@@ -1,0 +1,28 @@
+.wholeDiv {
+    height: 75px;
+    background-color: #CCDFCB;
+    margin-bottom: 30px;
+}
+
+.scheduleMaker {
+    color: #414141;
+    margin: 0;
+    font-size: 60px;
+}
+
+.smallLinks {
+    text-align: center;
+    /*height: 75px;*/
+    /*display: inline-block;*/
+}
+
+.smallLinks a {
+    font-size: 15px;
+    color: #414141;
+    font-weight: bold;
+}
+
+.parent {
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+}

@@ -9,7 +9,30 @@ export default class Title extends React.Component {
         this.handleWeekPredictionChange = this.handleWeekPredictionChange.bind(this);
 
         this.state = {
-            weekPredictionId: this.props.scheduleData.weekPrediction.id
+            weekPredictionId: this.props.scheduleData.weekPrediction.id,
+            inputStyle: {
+                "fontSize": "20pt",
+                "fontWeight": "bold",
+                "color": "#414141"
+            },
+            usesStyle: {
+                "fontSize": "20pt",
+                "fontWeight": "bold",
+                "marginLeft": "20px",
+                "marginRight": "20px"
+            },
+            divStyle: {
+                "textAlign": "center",
+            },
+            selectStyle: {
+                "fontSize": "20pt",
+                "fontWeight": "bold",
+                "color": "#414141",
+                "width": "200px"
+            },
+            tableStyle: {
+                "margin": "0 auto"
+            }
         };
     }
 
@@ -32,26 +55,43 @@ export default class Title extends React.Component {
             this.props.weekPredictionsArray.forEach(weekPrediction => {
                 options.push(
                     <option key={weekPrediction.id.toString() + weekPrediction.title}
-                                     value={weekPrediction.id}
+                            value={weekPrediction.id}
                     >{weekPrediction.title}</option>
                 )
             });
         }
 
         return (
-            <div>
-                <input id="title"
-                       type="text"
-                       defaultValue={this.props.scheduleData.title}
-                       onBlur={this.handleOnBlur}/>
-                uses
-
-                <select defaultValue={this.state.weekPredictionId}
-                        value={this.state.value}
-                        onChange={this.handleWeekPredictionChange}>
-                    {options}
-                </select>
-
+            <div style={this.state.divStyle}>
+                <table style={this.state.tableStyle}>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input id="title"
+                                   type="text"
+                                   defaultValue={this.props.scheduleData.title}
+                                   onBlur={this.handleOnBlur}
+                                   style={this.state.inputStyle}
+                            />
+                        </td>
+                        <td>
+                        <span style={this.state.usesStyle}>
+                            uses week
+                        </span>
+                        </td>
+                        <td>
+                            <select className="form-control"
+                                    defaultValue={this.state.weekPredictionId}
+                                    value={this.state.value}
+                                    onChange={this.handleWeekPredictionChange}
+                                    style={this.state.selectStyle}
+                            >
+                                {options}
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }

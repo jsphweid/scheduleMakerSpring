@@ -19,15 +19,25 @@
     <form:form commandName="weekPrediction">
         <form:hidden path="belongsTo" />
         <form:hidden path="id" />
-        <table>
+        <table class="table">
             <tr>
-                <td>Title : <form:input path="title" /></td>
-                <form:errors path="title" cssClass="error" />
+                <th>Title</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+                <th>Day 6</th>
+                <th>Day 7</th>
+            </tr>
+            <tr>
+                <td>
+                    <form:input path="title" required="required"></form:input> <br>
+                </td>
                 <c:forEach begin="0" end="6" varStatus="loop">
                     <td>
                         <div class="form-group">
-                            <label for="selectLabel">Pick Day Prediction</label>
-                            <form:select id="select${loop.index}" path="day${loop.index}.id">
+                            <form:select class="form-control" id="select${loop.index}" path="day${loop.index}.id">
                                 <form:options items="${allDayPredictions}" itemValue="id" itemLabel="title" />
                             </form:select>
                         </div>

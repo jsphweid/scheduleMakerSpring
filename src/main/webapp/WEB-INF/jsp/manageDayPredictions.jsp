@@ -11,34 +11,30 @@
 <jsp:include page="template/header.jsp"/>
 <div class="container">
 
+<h2>Day Predictions</h2>
 
+    <a class="btn btn-default" style="margin-bottom: 20px" href="addDayPrediction.html">
+        Add Day Prediction
+    </a>
 
-<p>
-    Here are all the day predictions
-</p>
-
-<h2>Day Prediction Table</h2>
-
-<table border="2" cellpadding="2">
-    <tr>
-        <th>Day Prediction</th>
-        <th></th>
-    </tr>
-    <c:forEach items="${dayPredictions}" var="dayPrediction">
-        <tr>
-            <td>${dayPrediction.title}</td>
-            <td><a href="showDayPrediction/${dayPrediction.id}"><button class="btn btn-default">Show</button></a></td>
-        </tr>
-    </c:forEach>
-</table>
-
-<a href="addDayPrediction.html">
-    <button class="btn btn-default">
-        Add Day Prediction >>
-    </button>
-</a>
-
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Day Prediction</th>
+                        <th></th>
+                    </tr>
+                    <c:forEach items="${dayPredictions}" var="dayPrediction">
+                        <tr>
+                            <td>${dayPrediction.title}</td>
+                            <td><a href="showDayPrediction/${dayPrediction.id}"><button class="btn btn-default">Show</button></a></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </div>
 <jsp:include page="template/footer.jsp"/>

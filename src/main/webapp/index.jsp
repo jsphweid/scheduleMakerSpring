@@ -16,37 +16,42 @@
 
 
 
-<h2>Welcome <sec:authentication property="name" /></h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Welcome <sec:authentication property="name" />,</h2>
+            <p>
+                scheduleMaker is a tool to make the task of creating a weekly
+                schedule for a restaurant easier. The product of this is a graph
+                displaying stats about how your schedule stacks up in terms of
+                cost and efficiency.
+            </p>
+            <p>
+                The person in charge of making the schedules inserts
+                employees into a table and gives them a wage and a score.
+                One also makes predictions about the busy-ness of each day.
+                As one builds the final schedule, one can see an hour by hour
+                forcast how their schedule is shaping up with regards to the
+                predictions they made and the decisions they make in shift
+                assignment.
+            </p>
+            <p>
+                This project is built on Spring MVC / Java. It uses Spring Security,
+                Hibernate, and MySQL. Most of the front-end pages are built with JSP.
+                The actual schedule making part is all built on React. The project
+                is hosted <a href="https://github.com/jsphweid/scheduleMakerSpring/">
+                on Github.</a>
+            </p>
+        </div>
 
-<table>
-    <tr>
-        <th colspan="1"></th>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="manageEmployees.html">Manage Employees >></a></td>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="managePositions.html">Manage Positions >></a></td>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="manageDayPredictions.html">Manage Day Predictions >></a></td>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="manageWeekPredictions.html">Manage Week Predictions >></a></td>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="manageEmployeesPositions.html">Manage Employee Positions >></a></td>
-    </tr>
-    <tr>
-        <td><a class="btn btn-default" href="manageSchedules.html">Manage Schedules >></a></td>
-    </tr>
-</table>
-
-<a class="btn btn-danger" href="j_spring_security_logout">Logout >></a>
-
-
+        <div class="col-md-6">
+            <h2>In action:</h2>
+            <p>
+                put a pic here of a chart???
+            </p>
+        </div>
+    </div>
 
 </div>
-<jsp:include page="WEB-INF/jsp/template/footer.jsp"/>
+<%--<jsp:include page="WEB-INF/jsp/template/footer.jsp"/>--%>
 </body>
 </html>

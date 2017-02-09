@@ -22,32 +22,42 @@
         <input type="hidden" name="jsonChanges" value="initial text">
         <%--<form:hidden id="returnInput" path="jsonChanges" value="" />--%>
 
-        <table border="2" cellpadding="2">
-            <tr>
-                <th>Name</th>
-                <c:forEach items="${positions}" var="position">
-                    <th>${position.title}</th>
-                </c:forEach>
-            </tr>
-            <c:forEach items="${employees}" var="employee">
-                <tr>
-                    <td>${employee.firstName} ${employee.lastName}</td>
-                    <c:forEach items="${positions}" var="position">
-                        <td>
-                            <c:if test="${employee.positions.contains(position)}">
-                                <input type="checkbox" id="${employee.id}-${position.id}" checked />
-                            </c:if>
-                            <c:if test="${!employee.positions.contains(position)}">
-                                <input type="checkbox" id="${employee.id}-${position.id}" />
-                            </c:if>
-                        </td>
-                    </c:forEach>
-                </tr>
-            </c:forEach>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Name</th>
+                            <c:forEach items="${positions}" var="position">
+                                <th>${position.title}</th>
+                            </c:forEach>
+                        </tr>
+                        <c:forEach items="${employees}" var="employee">
+                            <tr>
+                                <td>${employee.firstName} ${employee.lastName}</td>
+                                <c:forEach items="${positions}" var="position">
+                                    <td>
+                                        <c:if test="${employee.positions.contains(position)}">
+                                            <input type="checkbox" id="${employee.id}-${position.id}" checked />
+                                        </c:if>
+                                        <c:if test="${!employee.positions.contains(position)}">
+                                            <input type="checkbox" id="${employee.id}-${position.id}" />
+                                        </c:if>
+                                    </td>
+                                </c:forEach>
+                            </tr>
+                        </c:forEach>
 
-        </table>
+                    </table>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
 
         <button class="btn btn-default" type="submit">Update</button>
+        <a href="/scheduleMaker/manageEmployeesPositions" class="btn btn-default">Cancel</a>
 
     </form>
 

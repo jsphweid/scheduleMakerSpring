@@ -16,56 +16,61 @@
 
     <h1>Edit Employee</h1>
     <form:form method="POST" action="/scheduleMaker/updateEmployee" modelAttribute="employee">
-        <table >
-            <tr>
-                <td></td>
-                <td><form:hidden path="id" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><form:hidden path="belongsTo" /></td>
-            </tr>
-            <tr>
-                <td>First Name : </td>
-                <td><form:input path="firstName" /></td>
-                <form:errors path="firstName" cssClass="error" />
-            </tr>
-            <tr>
-                <td>Last Name : </td>
-                <td><form:input path="lastName"  /></td>
-                <form:errors path="lastName" cssClass="error" />
-            </tr>
-            <tr>
-                <td>Hourly Wage :</td>
-                <td><form:input path="hourlyWage" /></td>
-                <form:errors path="hourlyWage" cssClass="error" />
-            </tr>
-            <tr>
-                <td>Score :</td>
-                <td><form:input path="score" /></td>
-                <form:errors path="score" cssClass="error" />
-            </tr>
-            <tr>
-                <td>Min. Hours :</td>
-                <td><form:input path="minHours" /></td>
-                <form:errors path="minHours" cssClass="error" />
-            </tr>
-            <tr>
-                <td>Max. Hours :</td>
-                <td><form:input path="maxHours" /></td>
-                <form:errors path="maxHours" cssClass="error" />
-            </tr>
+        <form:errors path="*" cssClass="errorblock" element="div" />
 
-            <tr>
-                <td> </td>
-                <td><input class="btn btn-default" type="submit" value="Update" /></td>
-            </tr>
-        </table>
+
+        <form:hidden path="belongsTo" />
+        <form:hidden path="id" />
+
+        <label for="textinput1">
+            Enter First Name:
+        </label>
+        <form:input path="firstName" cssErrorClass="error" />
+        <form:errors path="firstName" cssClass="error" />
+        <br/>
+
+        <label for="textinput2">
+            Enter Last Name:
+        </label>
+        <form:input path="lastName" cssErrorClass="error" />
+        <form:errors path="lastName" cssClass="error" />
+        <br/>
+
+        <label for="textinput3">
+            Enter Hourly Wage:
+        </label>
+        <form:input path="hourlyWage" cssErrorClass="error" />
+        <form:errors path="hourlyWage" cssClass="error" />
+        <br/>
+
+
+        <label for="textinput4">
+            Enter Score:
+        </label>
+        <form:input path="score" cssErrorClass="error" />
+        <form:errors path="score" cssClass="error" />
+        <br/>
+
+        <label for="textinput5">
+            Enter Minimum Hours:
+        </label>
+        <form:input path="minHours" cssErrorClass="error" />
+        <form:errors path="minHours" cssClass="error" />
+        <br/>
+
+        <label for="textinput6">
+            Enter Maximum Hours:
+        </label>
+        <form:input path="maxHours" cssErrorClass="error" />
+        <form:errors path="maxHours" cssClass="error" />
+        <br/>
+
+        <input class="btn btn-default" type="submit" value="Update" />
+        <a href="/scheduleMaker/manageEmployees" class="btn btn-default">Cancel</a>
+
     </form:form>
 
-    <tr>
-        <td><a href="delete/${employee.id}"><button class="btn btn-danger">Delete Employee</button></a></td>
-    </tr>
+    <a href="delete/${employee.id}"><button class="btn btn-danger">Delete Employee</button></a></td>
 
 
 </div>

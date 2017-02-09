@@ -16,11 +16,13 @@
         <intercept-url pattern="/loginFailed.html" access="permitAll" />
         <intercept-url pattern="/logout.html" access="permitAll"/>
         <intercept-url pattern="/403.html" access="permitAll" />
+        <intercept-url pattern="/assets/**" access="permitAll" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
         <form-login
                 login-page="/login.html"
                 authentication-failure-url="/loginFailed.html"
-                default-target-url="/index.html"
+                default-target-url="/editSchedule/1"
+                always-use-default-target="true"
         />
         <logout logout-success-url="/logout.html"/>
         <access-denied-handler error-page="/403.html" />

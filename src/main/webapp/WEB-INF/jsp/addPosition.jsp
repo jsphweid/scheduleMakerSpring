@@ -34,6 +34,7 @@
     <form:hidden path="belongsTo" />
 
     <input type="submit" class="btn btn-default" value="Add Title"/>
+    <a href="/scheduleMaker/managePositions" class="btn btn-default">Cancel</a>
 
 </form:form>
 

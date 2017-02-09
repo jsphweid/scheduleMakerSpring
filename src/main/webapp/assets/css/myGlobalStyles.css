@@ -9,3 +9,7 @@
     padding: 8px;
     margin: 16px;
 }
+
+html * {
+    color: #414141 !important;
+}

@@ -22,6 +22,7 @@
     <script type="text/javascript">
         window.schedule_id = ${id}; // attach to global window object
     </script>
+
     <script src="<c:url value="/assets/js/react/bundled/bundle.js" />"></script>
 
 

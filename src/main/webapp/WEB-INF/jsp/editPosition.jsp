@@ -16,33 +16,19 @@
 
 
 
-<h1>Edit Position</h1>
-<form:form method="POST" action="/scheduleMaker/updatePosition" modelAttribute="position">
-    <table >
-        <tr>
-            <td></td>
-            <td><form:hidden path="id" /></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><form:hidden path="belongsTo" /></td>
-        </tr>
-        <tr>
-            <td>Title : </td>
-            <td><form:input path="title" /></td>
-            <form:errors path="title" cssClass="error" />
-        </tr>
+    <h1>Edit Position</h1>
+    <form:form method="POST" action="/scheduleMaker/updatePosition" modelAttribute="position">
+        <form:hidden path="id" />
+        <form:hidden path="belongsTo" />
+        Title :
+        <form:input path="title" />
+        <form:errors path="title" cssClass="error" />
+        <br><br>
+        <input class="btn btn-default" type="submit" value="Update" />
+        <a href="/scheduleMaker/managePositions" class="btn btn-default">Cancel</a>
+    </form:form>
 
-        <tr>
-            <td></td>
-            <td><input class="btn btn-default" type="submit" value="Update" /></td>
-        </tr>
-    </table>
-</form:form>
-
-<tr>
-    <td><a href="delete/${position.id}"><button class="btn btn-danger">Delete Position</button></a></td>
-</tr>
+    <a href="delete/${position.id}"><button class="btn btn-danger">Delete Position</button></a>
 
 
 </div>

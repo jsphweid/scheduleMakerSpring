@@ -43,6 +43,7 @@
             <td colspan="2"><input class="btn btn-default" type="reset" name="reset"></td>
         </tr>
     </table>
+    <input type="hidden" name="spring-security-redirect" value="/editSchedule/1" />
 </form>
 
 

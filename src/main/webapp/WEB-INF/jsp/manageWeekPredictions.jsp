@@ -12,8 +12,11 @@
 
 <div class="container">
 
+    <h2>Week Predictions </h2>
 
-    <table border="2" cellpadding="2">
+    <a style="margin-bottom: 20px;" class="btn btn-default" href="addWeekPrediction.html">Add New Week Prediction</a>
+
+    <table class="table table-striped">
         <tr>
             <th>Title</th>
             <th>Day 1</th>
@@ -39,12 +42,6 @@
             </tr>
         </c:forEach>
     </table>
-
-    <a href="addWeekPrediction.html">
-        <button class="btn btn-default">
-            Add New Week Prediction >>
-        </button>
-    </a>
 
 
 

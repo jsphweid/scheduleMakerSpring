@@ -141,6 +141,7 @@ export default class Main extends React.Component {
                                weekPredictionsArray={this.state.weekPredictionsArray}
                                handleWeekPredictionChange={this.handleWeekPredictionChange}
                         />
+                        <br/><br/>
                         <Table employeeArray={this.state.employeeArray}
                                handleSaveShift={this.handleSaveShift}
                                handleCreateShift={this.handleCreateShift}

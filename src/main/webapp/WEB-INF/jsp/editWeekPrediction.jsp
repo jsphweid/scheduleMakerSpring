@@ -24,29 +24,40 @@
         <form:hidden path="id" />
 
 
-        <table>
+        <table class="table">
+
             <tr>
-                <td>Title : <form:input path="title" /></td>
-                <form:errors path="title" cssClass="error" />
+                <th>Title</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+                <th>Day 6</th>
+                <th>Day 7</th>
+            </tr>
+
+            <tr>
+                <td><form:input path="title" required="required"/></td>
                 <c:forEach begin="0" end="6" varStatus="loop">
                     <td>
-                        <div class="form-group">
-                            <label for="selectLabel">Pick Day Prediction</label>
-                            <form:select id="select${loop.index}" path="day${loop.index}.id">
+                        <div>
+                            <form:select class="form-control" id="select${loop.index}" path="day${loop.index}.id">
                                 <form:options items="${allDayPredictions}" itemValue="id" itemLabel="title" />
                             </form:select>
                         </div>
                     </td>
                 </c:forEach>
             </tr>
+
         </table>
 
-        <td><input class="btn btn-default" type="submit" value="Update" /></td>
+        <input class="btn btn-default" type="submit" value="Update" />
+        <a class="btn btn-default" href="/scheduleMaker/manageWeekPredictions">Cancel</a>
+
     </form:form>
 
-    <tr>
-        <td><a href="delete/${weekPrediction.id}"><button class="btn btn-danger">Delete Week Prediction</button></a></td>
-    </tr>
+        <a class="btn btn-danger" href="delete/${weekPrediction.id}">Delete Week Prediction</a>
 
 
 

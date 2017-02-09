@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<c:url value="/assets/css/dayPrediction.css" />">
     <link href="<c:url value="/assets/css/myGlobalStyles.css"/>" rel="stylesheet">
 
-
 </head>
 <body>
 <jsp:include page="template/header.jsp"/>
@@ -20,35 +19,36 @@
 
 
 
-<h3>${dayPrediction.title}</h3>
+    <h3>${dayPrediction.title}</h3>
 
-<%--use this to convert to json--%>
-<input type="hidden" id="jsonBom" value="${dayPredictionJSON}"/>
 
-<div class="container-fluid">
-    <div class="canvasBarGraph">
-        <canvas id="cvs" width="1000" height="450" >
-            [No canvas support]
-        </canvas>
+    <a class="btn btn-default" href="/scheduleMaker/editDayPrediction/${dayPrediction.id}">Edit</a>
+
+    <a class="btn btn-default" href="/scheduleMaker/manageDayPredictions">Back to Day Predictions</a>
+
+
+
+    <%--use this to convert to json--%>
+    <input type="hidden" id="jsonBom" value="${dayPredictionJSON}"/>
+
+    <div class="container-fluid">
+        <div class="canvasBarGraph">
+            <canvas id="cvs" width="1000" height="450" >
+                [No canvas support]
+            </canvas>
+        </div>
     </div>
-</div>
 
-<script type="text/javascript">
-    window.onload = function () {
-        drawGraph({
-            color: "gray",
-            adjustable: false
-        }, $('#jsonBom').val());
-    };
-</script>
+    <br><br><br>
 
-<a href="/scheduleMaker/editDayPrediction/${dayPrediction.id}">
-    <button class="btn btn-default">Edit</button>
-</a>
-
-<a class="btn btn-default" href="/scheduleMaker/manageDayPredictions">Back to Day Predictions</a>
-
-
+    <script type="text/javascript">
+        window.onload = function () {
+            drawGraph({
+                color: "gray",
+                adjustable: false
+            }, $('#jsonBom').val());
+        };
+    </script>
 
 </div>
 <jsp:include page="template/footer.jsp"/>
