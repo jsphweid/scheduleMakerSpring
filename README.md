@@ -1,6 +1,5 @@
 # scheduleMakerSpring
 
 ## TODO
- - When an update on existing item has errors, why can't it be redirected back and show the errors?
- 
+ - bug with having a shift that goes past 0 hour
  
