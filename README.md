@@ -6,3 +6,8 @@
  - exceptional days, can deviate from schedule
  - system for feeding in sales data total for day or historical data in general, consider having something for that
  
+## Bugs
+ - Not sure why adding a shift from 1-3 am doesn't update the dom until refresh
+ - still some key collisions somewhere on react page
+ 
+ 
