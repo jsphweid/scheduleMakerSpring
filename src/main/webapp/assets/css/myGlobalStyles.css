@@ -13,3 +13,21 @@
 html * {
     color: #414141 !important;
 }
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.fill img {
+    flex-shrink: 0;
+    max-height: 300px;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.indexParagraphs p {
+    padding: 10px;
+}
