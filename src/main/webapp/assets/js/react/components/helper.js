@@ -114,7 +114,9 @@ export default class CalcTime {
             startInt = 0; // because hr 24 is 0
             console.log("this should almost never happen")
         }
-
+        if (startInt < 4) startInt += 24;
+        if (endInt < 4) endInt += 24;
+        // if (shift.startHour === 0) debugger;
         // case if either no hour or just 1 hour
         if (startInt === endInt) {
             if (!includeLastHour) {
@@ -137,7 +139,7 @@ export default class CalcTime {
                 let diff = (endInt + 24) - startInt;
                 diff += includeLastHour ? 1 : 0;
                 for (let i = 0; i < diff; i++) {
-                    if (startInt >= 24) startInt = 0;
+                    if (startInt >= (24 + 4)) startInt = 0;
                     arr[startInt - 4] = score;
                     startInt++;
                 }

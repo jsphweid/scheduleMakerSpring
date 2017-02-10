@@ -176,25 +176,23 @@ export default class Main extends React.Component {
                                handleSetNewTitle={this.handleSetNewTitle}
                                weekPredictionsArray={this.state.weekPredictionsArray}
                                handleWeekPredictionChange={this.handleWeekPredictionChange}
-                        />
+                        /> <br/><br/>
+                        <div className="container-fluid">
+                            {/*<Warnings />*/}
+                            <div className="col-md-12">
+                                <MyChart scheduleData={this.state.scheduleData}
+                                         employeeArray={this.state.employeeArray}
+                                         timeCostObj={this.state.timeCostObj}
+                                         simpleWeekObject={this.state.simpleWeekObject}
+                                />
+                            </div>
+                        </div>
                         <br/><br/>
                         <Table employeeArray={this.state.employeeArray}
                                handleSaveShift={this.handleSaveShift}
                                handleCreateShift={this.handleCreateShift}
                                handleDeleteShift={this.handleDeleteShift}
                         />
-                    </div>
-                    <div className="container-fluid">
-                        <div className="col-md-3">
-                            <Warnings />
-                        </div>
-                        <div className="col-md-9">
-                            <MyChart scheduleData={this.state.scheduleData}
-                                     employeeArray={this.state.employeeArray}
-                                     timeCostObj={this.state.timeCostObj}
-                                     simpleWeekObject={this.state.simpleWeekObject}
-                            />
-                        </div>
                     </div>
                 </div>
 
