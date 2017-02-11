@@ -28,23 +28,35 @@
     <table>
         <tr>
             <td>User:</td>
-            <td><input type="text" name="j_username" value=""></td>
+            <td><input id="usrName" type="text" name="j_username" value=""></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type="password" name="j_password"></td>
+            <td><input id="psword" type="password" name="j_password"></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input class="btn btn-default" type="submit" name="Submit" value="Submit">
+                <input id="loginn" class="bbtns btn btn-default" type="submit" name="Submit" value="Submit">
             </td>
         </tr>
         <tr>
-            <td colspan="2"><input class="btn btn-default" type="reset" name="reset"></td>
+            <td colspan="2">
+                <button id="demoButton" class="bbtns btn btn-default">Demo</button>
+            </td>
         </tr>
     </table>
     <input type="hidden" name="spring-security-redirect" value="/editSchedule/1" />
 </form>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#demoButton").on('click', function() {
+                $("#usrName").val("demo");
+                $("#psword").val("password");
+                $("#loginn").click();
+            });
+        });
+    </script>
 
 
 

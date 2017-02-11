@@ -21,7 +21,7 @@
         <form-login
                 login-page="/login.html"
                 authentication-failure-url="/loginFailed.html"
-                default-target-url="/editSchedule/1"
+                default-target-url="/"
                 always-use-default-target="true"
         />
         <logout logout-success-url="/logout.html"/>

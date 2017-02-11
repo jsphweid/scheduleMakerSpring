@@ -31,3 +31,8 @@ html * {
 .indexParagraphs p {
     padding: 10px;
 }
+
+.bbtns {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
