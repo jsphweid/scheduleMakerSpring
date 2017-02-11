@@ -48,12 +48,30 @@ public class ScheduleController {
         return "manageSchedules";
     }
 
+    @RequestMapping(value = "/addSchedule", method = RequestMethod.GET)
+    public String addSchedule(Model model) {
+        Schedule newSchedule = new Schedule();
+        newSchedule.setBelongsTo(sessionService.getSessionUsername());
+        newSchedule.setTitle("My New Schedule");
+        scheduleService.save(newSchedule);
+        int newId = newSchedule.getId();
+        model.addAttribute("id", newSchedule.getId());
+        return "redirect:/editSchedule/" + Integer.toString(newId);
+    }
+
     @RequestMapping(value = "/editSchedule/{id}", method = RequestMethod.GET)
     public String editSchedule(@PathVariable int id, Model model) {
         Schedule schedule = scheduleService.getScheduleById(id);
         if (!sessionService.getSessionUsername().equals(schedule.getBelongsTo())) return "403.html";
         model.addAttribute("id", id);
         return "editSchedule";
+    }
+
+    @RequestMapping(value = "/editSchedule/deleteSchedule/{id}", method = RequestMethod.GET)
+    public String deleteSchedule(@PathVariable int id) {
+        if (!sessionService.getSessionUsername().equals(scheduleService.getScheduleById(id).getBelongsTo())) return "403.html";
+        scheduleService.delete(scheduleService.getScheduleById(id));
+        return "redirect:/manageSchedules.html";
     }
 
     @ResponseBody
@@ -167,7 +185,7 @@ public class ScheduleController {
                 }
             }
             employeeService.save(employee);
-            return mapper.writeValueAsString(shifts);
+            return mapper.writeValueAsString(employeeService.findAllEmployees());
         } catch (IOException e) {
             e.printStackTrace();
         }

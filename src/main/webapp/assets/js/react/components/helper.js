@@ -11,24 +11,26 @@ export default class CalcTime {
         return hourDif + (minuteDif / 60);
     }
 
-    static getTotalHoursWorked(shifts) {
+    static getTotalHoursWorked(shifts, id) {
         let sum = 0;
         for (let i = 0; i < shifts.length; i++) {
+            if (shifts[i].schedule !== id) continue;
             sum += this.getShiftDuration(shifts[i]);
         }
         return Math.round(sum);
     }
 
-    static getTimeCostObj(employees) {
+    static getTimeCostObj(employees, schId) {
         let arrOfAllDataObjects = [];
         // send emps
         // for each, get back array of day data objects
         for (let i = 0; i < employees.length; i++) {
-            let empArr = this.getTimeCostShiftObjEmp(employees[i]);
+            let empArr = this.getTimeCostShiftObjEmp(employees[i], schId);
             for (let j = 0; j < empArr.length; j++) {
                 arrOfAllDataObjects.push(empArr[j]);
             }
         }
+        if (arrOfAllDataObjects.length === 0) return {};
         // iterate through big array
 
         // separate each object and make 2 objects
@@ -64,6 +66,7 @@ export default class CalcTime {
     }
 
     static combineArrays(arrOfArrs) {
+        if (arrOfArrs.length === 0) return new Array(24).fill(0);
         let ret = [];
         let len = arrOfArrs.length;
         let lenOfOneArr = arrOfArrs[0].length;
@@ -77,10 +80,11 @@ export default class CalcTime {
         return ret;
     }
 
-    static getTimeCostShiftObjEmp(employee) {
+    static getTimeCostShiftObjEmp(employee, schId) {
         let ret = [];
         // retrieve score and cost for each hour
         for (let i = 0; i < employee.shifts.length; i++) {
+            if (employee.shifts[i].schedule !== schId) continue;
             let shiftObj = {};
             shiftObj["day"] = employee.shifts[i].dayId;
             let scoreArray = this.makeScoreArray(employee.shifts[i], employee.score);
@@ -116,7 +120,6 @@ export default class CalcTime {
         }
         if (startInt < 4) startInt += 24;
         if (endInt < 4) endInt += 24;
-        // if (shift.startHour === 0) debugger;
         // case if either no hour or just 1 hour
         if (startInt === endInt) {
             if (!includeLastHour) {

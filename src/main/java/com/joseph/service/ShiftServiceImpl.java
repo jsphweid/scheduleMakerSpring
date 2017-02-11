@@ -35,4 +35,9 @@ public class ShiftServiceImpl implements ShiftService {
     public void delete(int id) {
         shiftRepository.delete(id);
     }
+
+    @Transactional
+    public void deleteShiftsHavingScheduleId(int id) {
+        shiftRepository.deleteShiftsHavingScheduleId(id);
+    }
 }

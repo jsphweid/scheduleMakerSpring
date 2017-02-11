@@ -55,7 +55,6 @@ export default class Shift extends React.Component {
         this.setState({
             isEditing: false
         });
-
         this.props.handleSaveShift(a, b, c, d, e, f);
     }
 

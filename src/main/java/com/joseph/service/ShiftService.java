@@ -14,4 +14,6 @@ public interface ShiftService {
     void deleteShiftsBelongingToEmp(int id);
 
     void delete(int id);
+
+    void deleteShiftsHavingScheduleId(int id);
 }

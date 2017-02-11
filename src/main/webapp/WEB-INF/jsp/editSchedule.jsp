@@ -25,6 +25,7 @@
 
     <script src="<c:url value="/assets/js/react/bundled/bundle.js" />"></script>
 
+    <a href="deleteSchedule/${id}" class="btn btn-danger">Delete Schedule</a>
 
 </div>
 

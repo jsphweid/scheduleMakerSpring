@@ -33,6 +33,7 @@ export default class MyChart extends React.Component {
     render() {
         let costScoreObj = this.props.timeCostObj[this.state.currentDay];
         let weekPredictedArray = this.props.simpleWeekObject[this.state.currentDay];
+        if ($.isEmptyObject(costScoreObj)) return (<h2>Add a shift to see the graph!</h2>);
         initialData.datasets[0].data = costScoreObj.cost;
         initialData.datasets[1].data = costScoreObj.score;
         initialData.datasets[2].data = weekPredictedArray;

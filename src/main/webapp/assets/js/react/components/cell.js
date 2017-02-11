@@ -39,7 +39,7 @@ export default class Cell extends React.Component {
             return (
                 <td>
                     {this.props.relevantShifts.map(shift =>
-                        <Shift key={shift.id.toString() + "shift" + shift.dayId.toString()}
+                        <Shift key={shift.id + shift.startHour + Math.random().toString(36).substring(7) + shift.startMinutes + "shift" + shift.dayId.toString()}
                                shift={shift}
                                handleDeleteShift={this.props.handleDeleteShift}
                                handleSaveShift={this.props.handleSaveShift}

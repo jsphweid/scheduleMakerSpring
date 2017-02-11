@@ -4,6 +4,15 @@ import CalcTime from './helper';
 
 export default class Row extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            overHours: {
+                "fontWeight" : "bold"
+            }
+        };
+    }
+
     render() {
         const tds = [];
         let self = this;
@@ -11,11 +20,11 @@ export default class Row extends React.Component {
             let relevantShifts = [];
             let shifts = this.props.thisEmployee.shifts;
             for (let i = 0; i < shifts.length; i++) {
-                if (shifts[i].dayId === day) {
+                if (shifts[i].dayId === day && shifts[i].schedule === this.props.scheduleId) {
                     relevantShifts.push(shifts[i])
                 }
             }
-            tds.push(<Cell key={day.toString() + this.props.thisEmployee.firstName}
+            tds.push(<Cell key={day.toString() + this.props.thisEmployee.firstName + this.props.thisEmployee.lastName + "cell"}
                            day={day}
                            relevantShifts={relevantShifts}
                            emp={self.props.thisEmployee}
@@ -25,12 +34,14 @@ export default class Row extends React.Component {
             />)
         });
 
+        let totalHoursWorked = CalcTime.getTotalHoursWorked(this.props.thisEmployee.shifts, this.props.scheduleId);
+        let overMax = (totalHoursWorked > this.props.thisEmployee.maxHours) ? (<span style={this.state.overHours}>Over Hours</span>) : "";
         return (
             <tr>
                 <td>
                     {this.props.thisEmployee.firstName + " " + this.props.thisEmployee.lastName}
                     <br/>
-                    (~{CalcTime.getTotalHoursWorked(this.props.thisEmployee.shifts)})
+                    (~{totalHoursWorked}) {overMax}
                 </td>
                 {tds}
             </tr>

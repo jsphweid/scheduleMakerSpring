@@ -10,4 +10,6 @@ public interface ScheduleRepository {
     Schedule getScheduleById(int id);
 
     List<Schedule> findAllSchedules();
+
+    void delete(Schedule schedule);
 }

@@ -42,12 +42,12 @@ export default class Edit extends React.Component {
     handleSaveForm(react, event) {
         event.preventDefault();
         this.props.handleSave(
-            this.state.shiftId,
-            this.state.employeeId,
-            this.state.startHour,
-            this.state.startMinutes,
-            this.state.endHour,
-            this.state.endMinutes
+            parseInt(this.state.shiftId),
+            parseInt(this.state.employeeId),
+            parseInt(this.state.startHour),
+            parseInt(this.state.startMinutes),
+            parseInt(this.state.endHour),
+            parseInt(this.state.endMinutes)
         );
     }
 

@@ -34,7 +34,9 @@ public class Shift {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;

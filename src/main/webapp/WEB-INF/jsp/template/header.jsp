@@ -57,7 +57,7 @@
                                 <a class="page-scroll" href="/scheduleMaker/manageWeekPredictions">Week Predictions</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="j_spring_security_logout">Logout</a>
+                                <a class="page-scroll" href="/scheduleMaker/j_spring_security_logout">Logout</a>
                             </li>
                         </ul>
                     </div>

@@ -8,8 +8,11 @@ export default class Title extends React.Component {
         this.handleOnBlur = this.handleOnBlur.bind(this);
         this.handleWeekPredictionChange = this.handleWeekPredictionChange.bind(this);
 
+        let wp = this.props.scheduleData.weekPrediction;
+        let weekPredictionId = wp ? wp.id : "choose";
+
         this.state = {
-            weekPredictionId: this.props.scheduleData.weekPrediction.id,
+            weekPredictionId: weekPredictionId,
             inputStyle: {
                 "fontSize": "20pt",
                 "fontWeight": "bold",
@@ -34,6 +37,7 @@ export default class Title extends React.Component {
                 "margin": "0 auto"
             }
         };
+
     }
 
     handleOnBlur() {
@@ -48,7 +52,6 @@ export default class Title extends React.Component {
     }
 
     render() {
-
         let options = [];
 
         if (this.props.weekPredictionsArray) {
@@ -86,6 +89,7 @@ export default class Title extends React.Component {
                                     onChange={this.handleWeekPredictionChange}
                                     style={this.state.selectStyle}
                             >
+                                <option value="choose" disabled>Choose</option>
                                 {options}
                             </select>
                         </td>

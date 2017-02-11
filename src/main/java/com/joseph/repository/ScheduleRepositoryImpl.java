@@ -35,4 +35,10 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
                 .setParameter("owner", session.getSessionUsername())
                 .getResultList();
     }
+
+    public void delete(Schedule schedule) {
+        em.createQuery("delete from Schedule s where s.id = :id")
+                .setParameter("id", schedule.getId())
+                .executeUpdate();
+    }
 }
