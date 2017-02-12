@@ -1,6 +1,5 @@
 package com.joseph.controller;
 
-import com.joseph.model.DayPrediction;
 import com.joseph.model.WeekPrediction;
 import com.joseph.service.DayPredictionService;
 import com.joseph.service.SessionService;

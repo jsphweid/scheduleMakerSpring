@@ -1,10 +1,7 @@
 package com.joseph.controller;
 
-
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.joseph.model.*;
 import com.joseph.service.*;
 import com.joseph.types.*;
@@ -38,8 +35,6 @@ public class ScheduleController {
 
     @Resource(name = "weekPredictionService")
     private WeekPredictionService weekPredictionService;
-
-    private static Gson gson = new Gson();
 
     @RequestMapping(value = "/manageSchedules", method = RequestMethod.GET)
     public String manageSchedules(Model model) {

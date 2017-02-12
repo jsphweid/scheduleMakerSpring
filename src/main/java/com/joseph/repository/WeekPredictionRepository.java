@@ -1,6 +1,5 @@
 package com.joseph.repository;
 
-import com.joseph.model.DayPrediction;
 import com.joseph.model.WeekPrediction;
 
 import java.util.List;
