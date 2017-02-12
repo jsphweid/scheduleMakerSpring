@@ -151,13 +151,14 @@ export default class Main extends React.Component {
 
     componentDidMount() {
         let component = this;
-        $.get("http://localhost:8080/scheduleMaker/getSchedule/" + window.schedule_id + ".json", (scheduleData) => {
+        // TODO: Why do I have to hard-code it in there?
+        $.get("/scheduleMaker/getSchedule/" + window.schedule_id + ".json", (scheduleData) => {
             component.setState({
                 "scheduleData" : scheduleData,
                 simpleWeekObject : this.getSimpleWeekObject(scheduleData)
             });
 
-            $.get("http://localhost:8080/scheduleMaker/getEmployees.json", (employeeArray) => {
+            $.get("/scheduleMaker/getEmployees.json", (employeeArray) => {
                 component.setState({
                     "employeeArray" : employeeArray,
                     "timeCostObj" : CalcTime.getTimeCostObj(employeeArray, scheduleData.id)
@@ -166,14 +167,13 @@ export default class Main extends React.Component {
 
 
         });
-        $.get("http://localhost:8080/scheduleMaker/getWeekPredictions.json", (weekPredictions) => {
+        $.get("/scheduleMaker/getWeekPredictions.json", (weekPredictions) => {
             component.setState({ "weekPredictionsArray" : weekPredictions})
         })
     }
 
     render() {
         if (this.state.employeeArray && this.state.scheduleData) {
-            console.log("rerender!!!!!!!!");
             return (
                 <div>
                     <div>

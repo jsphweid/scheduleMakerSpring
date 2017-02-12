@@ -7,7 +7,8 @@ module.exports = {
     debug: true,
     output: {
         path: __dirname,
-        filename: './target/scheduleMaker/assets/js/react/bundled/bundle.js'
+        filename: './src/main/webapp/assets/js/react/bundled/bundle.js'
+        // filename: './target/scheduleMaker/assets/js/react/bundled/bundle.js'
     },
     module: {
         loaders: [

@@ -38,7 +38,6 @@ export default class MyChart extends React.Component {
         initialData.datasets[1].data = costScoreObj.score;
         initialData.datasets[2].data = weekPredictedArray;
 
-        console.log("my chart rerender");
         return (
             <div className="container-fluid">
                 <div className="row" style={this.state.buttonGroup}>
