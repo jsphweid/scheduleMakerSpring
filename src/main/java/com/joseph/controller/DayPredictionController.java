@@ -57,6 +57,7 @@ public class DayPredictionController {
     @RequestMapping(value = "/showDayPrediction/{id}", method = RequestMethod.GET)
     public String showDayPrediction(@PathVariable int id, Model model) {
         DayPrediction dayPrediction = dayPredictionService.getDayPrediction(id);
+        if (!session.getSessionUsername().equals(dayPrediction.getBelongsTo())) return "403";
         model.addAttribute("dayPredictionJSON", dayPrediction.toString());
         model.addAttribute("dayPrediction", dayPrediction);
         return "showDayPrediction";
