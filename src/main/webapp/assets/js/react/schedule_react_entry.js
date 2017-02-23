@@ -7,6 +7,7 @@ import Table from './components/table';
 import MyChart from './components/myChart';
 
 import CalcTime from './components/helper';
+import CostScore from './components/CostScore'
 
 export default class Main extends React.Component {
 
@@ -73,7 +74,7 @@ export default class Main extends React.Component {
                 shift.endMinutes = endMinutes;
                 this.setState({
                     employeeArray: this.state.employeeArray,
-                    timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray, this.state.scheduleData.id),
+                    timeCostObj : new CostScore(this.state.employeeArray, this.state.scheduleData.id).getObj(),
                     simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
                 });
             }
@@ -106,7 +107,7 @@ export default class Main extends React.Component {
             emp.shifts.push(newShiftObj);
             this.setState({
                 employeeArray: this.state.employeeArray,
-                timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray, this.state.scheduleData.id),
+                timeCostObj : new CostScore(this.state.employeeArray, this.state.scheduleData.id).getObj(),
                 simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
             });
         });
@@ -120,7 +121,7 @@ export default class Main extends React.Component {
             this.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
             this.setState({
                 scheduleData: this.state.scheduleData,
-                timeCostObj : CalcTime.getTimeCostObj(this.state.employeeArray, this.state.scheduleData.id),
+                timeCostObj : new CostScore(this.state.employeeArray, this.state.scheduleData.id).getObj(),
                 simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
             });
         });
@@ -136,7 +137,7 @@ export default class Main extends React.Component {
             // emp.shifts = newShifts;
             this.setState({
                 employeeArray: JSON.parse(updatedEmployees),
-                timeCostObj : CalcTime.getTimeCostObj(JSON.parse(updatedEmployees), this.state.scheduleData.id),
+                timeCostObj : new CostScore(this.state.employeeArray, this.state.scheduleData.id).getObj(),
                 // simpleWeekObject : this.getSimpleWeekObject(this.state.scheduleData)
             });
         });
@@ -161,7 +162,8 @@ export default class Main extends React.Component {
             $.get("/scheduleMaker/getEmployees.json", (employeeArray) => {
                 component.setState({
                     "employeeArray" : employeeArray,
-                    "timeCostObj" : CalcTime.getTimeCostObj(employeeArray, scheduleData.id)
+                    "timeCostObj" : new CostScore(employeeArray, scheduleData.id).getObj()
+
                 });
             });
 

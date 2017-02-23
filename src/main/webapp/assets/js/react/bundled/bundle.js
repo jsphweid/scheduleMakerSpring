@@ -164,7 +164,7 @@
 	                    shift.endMinutes = endMinutes;
 	                    this.setState({
 	                        employeeArray: this.state.employeeArray,
-	                        timeCostObj: _helper2.default.getTimeCostObj(this.state.employeeArray, this.state.scheduleData.id),
+	                        timeCostObj: _helper2.default.getCostScoreObj(this.state.employeeArray, this.state.scheduleData.id),
 	                        simpleWeekObject: this.getSimpleWeekObject(this.state.scheduleData)
 	                    });
 	                }
@@ -201,7 +201,7 @@
 	                emp.shifts.push(newShiftObj);
 	                _this2.setState({
 	                    employeeArray: _this2.state.employeeArray,
-	                    timeCostObj: _helper2.default.getTimeCostObj(_this2.state.employeeArray, _this2.state.scheduleData.id),
+	                    timeCostObj: _helper2.default.getCostScoreObj(_this2.state.employeeArray, _this2.state.scheduleData.id),
 	                    simpleWeekObject: _this2.getSimpleWeekObject(_this2.state.scheduleData)
 	                });
 	            });
@@ -218,7 +218,7 @@
 	                _this3.state.scheduleData.weekPrediction = JSON.parse(newWeekPredictionJsonString);
 	                _this3.setState({
 	                    scheduleData: _this3.state.scheduleData,
-	                    timeCostObj: _helper2.default.getTimeCostObj(_this3.state.employeeArray, _this3.state.scheduleData.id),
+	                    timeCostObj: _helper2.default.getCostScoreObj(_this3.state.employeeArray, _this3.state.scheduleData.id),
 	                    simpleWeekObject: _this3.getSimpleWeekObject(_this3.state.scheduleData)
 	                });
 	            });
@@ -237,7 +237,7 @@
 	                // emp.shifts = newShifts;
 	                _this4.setState({
 	                    employeeArray: JSON.parse(updatedEmployees),
-	                    timeCostObj: _helper2.default.getTimeCostObj(JSON.parse(updatedEmployees), _this4.state.scheduleData.id)
+	                    timeCostObj: _helper2.default.getCostScoreObj(JSON.parse(updatedEmployees), _this4.state.scheduleData.id)
 	                });
 	            });
 	        }
@@ -265,7 +265,7 @@
 	                $.get("/scheduleMaker/getEmployees.json", function (employeeArray) {
 	                    component.setState({
 	                        "employeeArray": employeeArray,
-	                        "timeCostObj": _helper2.default.getTimeCostObj(employeeArray, scheduleData.id)
+	                        "timeCostObj": _helper2.default.getCostScoreObj(employeeArray, scheduleData.id)
 	                    });
 	                });
 	            });
@@ -4907,7 +4907,7 @@
 	   * attribute names,
 	   *
 	   * Properties: object mapping DOM property name to one of the
-	   * DOMPropertyInjection constants or null. If your attribute isn't in here,
+	   * DOMPropertyInjection testData or null. If your attribute isn't in here,
 	   * it won't get written to the DOM.
 	   *
 	   * DOMAttributeNames: object mapping React attribute name to the DOM
@@ -23155,13 +23155,13 @@
 	            return Math.round(sum);
 	        }
 	    }, {
-	        key: "getTimeCostObj",
+	        key: "getCostScoreObj",
 	        value: function getTimeCostObj(employees, schId) {
 	            var arrOfAllDataObjects = [];
 	            // send emps
 	            // for each, get back array of day data objects
 	            for (var i = 0; i < employees.length; i++) {
-	                var empArr = this.getTimeCostShiftObjEmp(employees[i], schId);
+	                var empArr = this.getShiftObjectsBelongingTo(employees[i], schId);
 	                for (var j = 0; j < empArr.length; j++) {
 	                    arrOfAllDataObjects.push(empArr[j]);
 	                }
@@ -23216,7 +23216,7 @@
 	            return ret;
 	        }
 	    }, {
-	        key: "getTimeCostShiftObjEmp",
+	        key: "getShiftObjectsBelongingTo",
 	        value: function getTimeCostShiftObjEmp(employee, schId) {
 	            var ret = [];
 	            // retrieve score and cost for each hour
@@ -51133,7 +51133,7 @@
 	var COMPARE_PARTIAL_FLAG = 1,
 	    COMPARE_UNORDERED_FLAG = 2;
 	
-	/** Used as references for various `Number` constants. */
+	/** Used as references for various `Number` testData. */
 	var MAX_SAFE_INTEGER = 9007199254740991;
 	
 	/** `Object#toString` result references. */

@@ -4,9 +4,10 @@
   "description": "A tool to use when putting together a schedule at a food joint.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter progress testSetup.js \"src/**/*.test.js\"",
     "build": "babel src -d lib",
-    "watch": "webpack --watch -d"
+    "watch": "webpack --watch -d",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,9 @@
     "babel-preset-env": "^1.1.8",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
-    "chart.js": "^2.4.0"
+    "chai": "^3.5.0",
+    "chart.js": "^2.4.0",
+    "jsdom": "^9.11.0",
+    "mocha": "^3.2.0"
   }
 }
