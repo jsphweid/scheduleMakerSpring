@@ -20,7 +20,7 @@
 
     <h2>Edit Day Prediction</h2>
 
-    <form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/scheduleMaker/updateDayPrediction/${dayPrediction.id}">
+    <form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/updateDayPrediction/${dayPrediction.id}">
 
         <form:errors path="*" cssClass="errorblock" element="div" />
 
@@ -58,7 +58,7 @@
         <form:hidden path="hour23" value="" />
 
         <input type="submit" class="btn btn-default" value="Update"/>
-        <a class="btn btn-default" href="/scheduleMaker/showDayPrediction/${dayPrediction.id}">Cancel</a>
+        <a class="btn btn-default" href="/showDayPrediction/${dayPrediction.id}">Cancel</a>
         <br><br>
         <a class="btn btn-danger" href="delete/${dayPrediction.id}">Delete Day Prediction</a>
 

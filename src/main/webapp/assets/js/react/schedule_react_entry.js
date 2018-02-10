@@ -153,13 +153,13 @@ export default class Main extends React.Component {
     componentDidMount() {
         let component = this;
         // TODO: Why do I have to hard-code it in there?
-        $.get("/scheduleMaker/getSchedule/" + window.schedule_id + ".json", (scheduleData) => {
+        $.get("/getSchedule/" + window.schedule_id + ".json", (scheduleData) => {
             component.setState({
                 "scheduleData" : scheduleData,
                 simpleWeekObject : this.getSimpleWeekObject(scheduleData)
             });
 
-            $.get("/scheduleMaker/getEmployees.json", (employeeArray) => {
+            $.get("/getEmployees.json", (employeeArray) => {
                 component.setState({
                     "employeeArray" : employeeArray,
                     "timeCostObj" : new CostScore(employeeArray, scheduleData.id).getObj()
@@ -169,7 +169,7 @@ export default class Main extends React.Component {
 
 
         });
-        $.get("/scheduleMaker/getWeekPredictions.json", (weekPredictions) => {
+        $.get("/getWeekPredictions.json", (weekPredictions) => {
             component.setState({ "weekPredictionsArray" : weekPredictions})
         })
     }

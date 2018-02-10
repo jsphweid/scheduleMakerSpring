@@ -47,7 +47,7 @@
         <div class="col-md-6">
             <h2>In action:</h2>
             <div class="fill">
-                <a href="/scheduleMaker/manageSchedules">
+                <a href="/manageSchedules">
                     <img src="https://res.cloudinary.com/dx6f6g5cv/image/upload/v1486747894/Screen_Shot_2017-02-10_at_11.30.21_AM_d8gyep.png" alt="">
                 </a>
             </div>

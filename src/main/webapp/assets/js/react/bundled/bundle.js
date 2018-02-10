@@ -256,20 +256,20 @@
 	
 	            var component = this;
 	            // TODO: Why do I have to hard-code it in there?
-	            $.get("/scheduleMaker/getSchedule/" + window.schedule_id + ".json", function (scheduleData) {
+	            $.get("/getSchedule/" + window.schedule_id + ".json", function (scheduleData) {
 	                component.setState({
 	                    "scheduleData": scheduleData,
 	                    simpleWeekObject: _this5.getSimpleWeekObject(scheduleData)
 	                });
 	
-	                $.get("/scheduleMaker/getEmployees.json", function (employeeArray) {
+	                $.get("/getEmployees.json", function (employeeArray) {
 	                    component.setState({
 	                        "employeeArray": employeeArray,
 	                        "timeCostObj": _helper2.default.getCostScoreObj(employeeArray, scheduleData.id)
 	                    });
 	                });
 	            });
-	            $.get("/scheduleMaker/getWeekPredictions.json", function (weekPredictions) {
+	            $.get("/getWeekPredictions.json", function (weekPredictions) {
 	                component.setState({ "weekPredictionsArray": weekPredictions });
 	            });
 	        }
