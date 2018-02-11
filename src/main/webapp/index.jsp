@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Welcome</title>
+    <title>Schedule Maker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="<c:url value="/assets/js/jquery-3.1.1.min.js" />"></script>
     <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -47,7 +47,7 @@
         <div class="col-md-6">
             <h2>In action:</h2>
             <div class="fill">
-                <a href="/manageSchedules">
+                <a href="/scheduleMaker/manageSchedules">
                     <img src="https://res.cloudinary.com/dx6f6g5cv/image/upload/v1486747894/Screen_Shot_2017-02-10_at_11.30.21_AM_d8gyep.png" alt="">
                 </a>
             </div>

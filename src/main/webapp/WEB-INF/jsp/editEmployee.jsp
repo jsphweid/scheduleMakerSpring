@@ -15,7 +15,7 @@
 
 
     <h1>Edit Employee</h1>
-    <form:form method="POST" action="/updateEmployee" modelAttribute="employee">
+    <form:form method="POST" action="/scheduleMaker/updateEmployee" modelAttribute="employee">
         <form:errors path="*" cssClass="errorblock" element="div" />
 
 

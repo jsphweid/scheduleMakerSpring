@@ -72,7 +72,7 @@
 
     <input type="submit" class="btn btn-default" value="Add Employee"/>
 
-    <a href="/manageEmployees" type="button" class="btn btn-default">Cancel</a>
+    <a href="/scheduleMaker/manageEmployees" type="button" class="btn btn-default">Cancel</a>
 
 </form:form>
 

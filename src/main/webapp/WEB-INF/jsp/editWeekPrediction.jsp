@@ -18,7 +18,7 @@
 
 
 
-    <form:form action="/updateWeekPrediction" method="POST" modelAttribute="weekPrediction">
+    <form:form action="/scheduleMaker/updateWeekPrediction" method="POST" modelAttribute="weekPrediction">
 
         <form:hidden path="belongsTo" />
         <form:hidden path="id" />
@@ -53,7 +53,7 @@
         </table>
 
         <input class="btn btn-default" type="submit" value="Update" />
-        <a class="btn btn-default" href="/manageWeekPredictions">Cancel</a>
+        <a class="btn btn-default" href="/scheduleMaker/manageWeekPredictions">Cancel</a>
 
     </form:form>
 

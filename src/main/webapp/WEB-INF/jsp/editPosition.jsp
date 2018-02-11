@@ -17,7 +17,7 @@
 
 
     <h1>Edit Position</h1>
-    <form:form method="POST" action="/updatePosition" modelAttribute="position">
+    <form:form method="POST" action="/scheduleMaker/updatePosition" modelAttribute="position">
         <form:hidden path="id" />
         <form:hidden path="belongsTo" />
         Title :
@@ -25,7 +25,7 @@
         <form:errors path="title" cssClass="error" />
         <br><br>
         <input class="btn btn-default" type="submit" value="Update" />
-        <a href="/managePositions" class="btn btn-default">Cancel</a>
+        <a href="/scheduleMaker/managePositions" class="btn btn-default">Cancel</a>
     </form:form>
 
     <a href="delete/${position.id}"><button class="btn btn-danger">Delete Position</button></a>

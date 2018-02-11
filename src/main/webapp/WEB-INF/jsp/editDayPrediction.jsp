@@ -20,7 +20,7 @@
 
     <h2>Edit Day Prediction</h2>
 
-    <form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/updateDayPrediction/${dayPrediction.id}">
+    <form:form commandName="dayPrediction" path="dayPredictionForm" method="post" action="/scheduleMaker/updateDayPrediction/${dayPrediction.id}">
 
         <form:errors path="*" cssClass="errorblock" element="div" />
 

@@ -9,7 +9,7 @@
         <div class="row">
 
             <div class="col-md-5">
-                <a href="/">
+                <a href="/scheduleMaker">
                     <h1 class="scheduleMaker">scheduleMaker</h1>
                 </a>
             </div>
@@ -20,22 +20,22 @@
                 <%--<div class="col-md-1 smallLinks"></div>--%>
 
                 <%--<div class="col-md-1 smallLinks" style="margin-top: 20px">--%>
-                    <%--<div><a href="/manageSchedules">Manage Schedules</a></div>--%>
+                    <%--<div><a href="/scheduleMaker/manageSchedules">Manage Schedules</a></div>--%>
                 <%--</div>--%>
                 <%--<div class="col-md-1 smallLinks">--%>
-                    <%--<div><a href="/manageEmployees">Manage Employees</a></div>--%>
+                    <%--<div><a href="/scheduleMaker/manageEmployees">Manage Employees</a></div>--%>
                 <%--</div>--%>
                 <%--&lt;%&ndash;<div class="col-md-1 smallLinks">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<a href="/managePositions">Manage Positions</a>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<a href="/scheduleMaker/managePositions">Manage Positions</a>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;<div class="col-md-1 smallLinks">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<a href="/manageEmployeesPositions">Manage Employee's Positions</a>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<a href="/scheduleMaker/manageEmployeesPositions">Manage Employee's Positions</a>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
                 <%--<div class="col-md-1 smallLinks">--%>
-                    <%--<div><a href="/manageDayPredictions">Manage Day Predictions</a></div>--%>
+                    <%--<div><a href="/scheduleMaker/manageDayPredictions">Manage Day Predictions</a></div>--%>
                 <%--</div>--%>
                 <%--<div class="col-md-1 smallLinks">--%>
-                    <%--<div><a href="/manageWeekPredictions">Manage Week Predictions</a></div>--%>
+                    <%--<div><a href="/scheduleMaker/manageWeekPredictions">Manage Week Predictions</a></div>--%>
                 <%--</div>--%>
                 <%--<div class="col-md-1 smallLinks">--%>
                     <%--<div><a href="j_spring_security_logout">Logout</a></div>--%>

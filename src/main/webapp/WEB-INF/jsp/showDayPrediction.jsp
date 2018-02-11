@@ -22,9 +22,9 @@
     <h3>${dayPrediction.title}</h3>
 
 
-    <a class="btn btn-default" href="/editDayPrediction/${dayPrediction.id}">Edit</a>
+    <a class="btn btn-default" href="/scheduleMaker/editDayPrediction/${dayPrediction.id}">Edit</a>
 
-    <a class="btn btn-default" href="/manageDayPredictions">Back to Day Predictions</a>
+    <a class="btn btn-default" href="/scheduleMaker/manageDayPredictions">Back to Day Predictions</a>
 
 
 

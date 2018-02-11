@@ -57,7 +57,7 @@
         </div>
 
         <button class="btn btn-default" type="submit">Update</button>
-        <a href="/manageEmployeesPositions" class="btn btn-default">Cancel</a>
+        <a href="/scheduleMaker/manageEmployeesPositions" class="btn btn-default">Cancel</a>
 
     </form>
 
