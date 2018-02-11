@@ -1,4 +1,5 @@
-let path = require('path');
+const path = require('path')
+const webpack = require("webpack")
 
 module.exports = {
     entry: './src/main/webapp/assets/js/react/schedule_react_entry.js',
@@ -8,7 +9,6 @@ module.exports = {
     output: {
         path: __dirname,
         filename: './src/main/webapp/assets/js/react/bundled/bundle.js'
-        // filename: './target/scheduleMaker/assets/js/react/bundled/bundle.js'
     },
     module: {
         loaders: [
@@ -22,18 +22,8 @@ module.exports = {
                 }
             }
         ]
-    }
-};
-
-// module.exports = {
-//     entry: './src/main/webapp/assets/js/react/schedule_react_entry.js',
-//     output: {
-//         path: __dirname,
-//         filename: './src/main/webapp/assets/js/react/bundled/bundle.js'
-//     },
-//     module: {
-//         loaders: [
-//             { test: /\.css$/, loader: "style!css" }
-//         ]
-//     }
-// };
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin()
+    ]
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter progress testSetup.js \"src/**/*.test.js\"",
-    "build": "babel src -d lib",
+    "build": "babel src -d lib && webpack",
     "watch": "webpack --watch -d",
     "test:watch": "npm run test -- --watch"
   },
