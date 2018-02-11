@@ -45,19 +45,19 @@
                     <div class="collapse navbar-collapse myNavbar" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a class="page-scroll" href="/manageSchedules">Schedules</a>
+                                <a class="page-scroll" href="/scheduleMaker/manageSchedules">Schedules</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="/manageEmployees">Employees</a>
+                                <a class="page-scroll" href="/scheduleMaker/manageEmployees">Employees</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="/manageDayPredictions">Day Predictions</a>
+                                <a class="page-scroll" href="/scheduleMaker/manageDayPredictions">Day Predictions</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="/manageWeekPredictions">Week Predictions</a>
+                                <a class="page-scroll" href="/scheduleMaker/manageWeekPredictions">Week Predictions</a>
                             </li>
                             <li>
-                                <a class="page-scroll" href="/j_spring_security_logout">Logout</a>
+                                <a class="page-scroll" href="/scheduleMaker/j_spring_security_logout">Logout</a>
                             </li>
                         </ul>
                     </div>
