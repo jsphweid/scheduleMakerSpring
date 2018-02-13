@@ -7,6 +7,7 @@
  - have mysql in the right place with jpaContext settings as they should be. You can use the local .sql file to restore the db with some mock data.
 
 ## TODO
+ - make a button that tells the server to reset sql db to a certain point
  - bug with having a shift that goes past 0 hour
  - have position warnings be attached to hour, day, days, week (strong man needed on monday morning to put away truck)
  - exceptional days, can deviate from schedule
